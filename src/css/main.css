@@ -1,0 +1,42 @@
+:root{
+    --dark: #1b1b1b;
+    /* --yellow:#efdec4; */
+       --yellow:#ffeba7;
+}
+@font-face {
+    font-family: vazir_matn;
+    src: url(../fonts/Vazirmatn-Medium.ttf);
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: vazir_matn;
+}
+
+
+.bg_dark{
+    background: var(--dark);
+}
+.color_dark{
+    color: var(--dark);
+}
+.bg_yellow{
+    background: var(--yellow);
+}
+.color_yellow{
+    color: var(--yellow);
+}
+.box_shadow{
+    box-shadow:  var(--dark) 10px -10px 0px -3px, var(--yellow) 10px -10px;
+}
+
+header a:hover{
+    color: #fff3cb;
+}
+header img{
+    cursor: pointer;
+}
+header .logo{
+    width: 70px;
+}
