@@ -1,42 +1,240 @@
-:root{
+:root {
     --dark: #1b1b1b;
-    /* --yellow:#efdec4; */
-       --yellow:#ffeba7;
+    /* --dark:#EAE6E3; */
+    /* --yellow:#6b533f; */
+    --yellow: #efdec4;
+    /*  --yellow:#ffeba7; */
 }
+
 @font-face {
     font-family: vazir_matn;
     src: url(../fonts/Vazirmatn-Medium.ttf);
 }
-*{
+
+@font-face {
+    font-family: lalezar;
+    src: url(../fonts/Lalezar-Regular.ttf);
+}
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: vazir_matn;
+    font-family: vazir_matn !important;
 }
 
+.heading {
+    font-family: lalezar !important;
+}
 
-.bg_dark{
+.bg_dark {
     background: var(--dark);
 }
-.color_dark{
+
+.color_dark {
     color: var(--dark);
 }
-.bg_yellow{
+
+.bg_yellow {
     background: var(--yellow);
 }
-.color_yellow{
+
+.color_yellow {
     color: var(--yellow);
 }
-.box_shadow{
-    box-shadow:  var(--dark) 10px -10px 0px -3px, var(--yellow) 10px -10px;
+
+.box_shadow {
+    box-shadow: var(--dark) 10px -10px 0px -2px, var(--yellow) 9px -9px;
 }
 
-header a:hover{
+.container-spinner {
+    top: -60px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+header a:hover {
     color: #fff3cb;
 }
-header img{
+
+header img {
     cursor: pointer;
 }
-header .logo{
+
+header .logo {
     width: 70px;
+}
+
+header #search-input {
+    outline: none;
+    border: 1px solid var(--yellow);
+    background: none;
+    color: var(--yellow);
+}
+
+header #search-input::placeholder {
+    color: var(--yellow);
+}
+
+
+.btn15 .icon {
+    transition-duration: 0.5s;
+    position: absolute;
+    height: 3px;
+    width: 25px;
+    right: 12px;
+    background-color: var(--yellow);
+}
+
+.btn15 .icon:before {
+    transition-duration: 0.5s;
+    position: absolute;
+    width: 25px;
+    height: 3px;
+    background-color: var(--yellow);
+    content: "";
+    top: -10px;
+    border-radius: 4px;
+}
+
+.btn15 .icon:after {
+    transition-duration: 0.5s;
+    position: absolute;
+    width: 25px;
+    height: 3px;
+    background-color: var(--yellow);
+    content: "";
+    top: 10px;
+    border-radius: 4px;
+}
+
+.btn15[aria-expanded="true"] .icon {
+    transition-duration: 0.5s;
+    background: transparent;
+}
+
+.btn15[aria-expanded="true"] .icon:before {
+    transform: rotateZ(45deg) scaleX(1.25) translate(6px, 6px);
+}
+
+.btn15[aria-expanded="true"] .icon:after {
+    transform: rotateZ(-45deg) scaleX(1.25) translate(6px, -6px);
+}
+
+.btn15:hover {
+    cursor: pointer;
+}
+
+
+/*heading*/
+#img-head1 {
+    left: -10px;
+    top: 10px;
+}
+
+#img-head2 {
+    right: -10px;
+    top: 10px;
+
+}
+
+#img-head3 {
+    left: 150px;
+    bottom: -20px;
+
+}
+
+#img-head4 {
+    right: 150px;
+    bottom: -10px;
+
+}
+
+.div-heading {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) !important;
+}
+
+h1 {
+    font-size: 60px;
+}
+
+#heading {
+    height: 80vh;
+}
+
+/* @media screen and (max-width:900px){
+    #heading{
+        height: 50vh;
+    }
+}
+ */
+
+.button-home {
+    border: 1px solid var(--yellow);
+    background: var(--dark);
+}
+
+
+
+
+/*details*/
+#details {}
+
+/*poem*/
+.b {
+    display: flex;
+    justify-content: space-between;
+    text-align: right;
+}
+
+.b div {
+
+    width: 50%;
+}
+
+
+
+form {
+
+    padding: 10px;
+}
+
+form div {
+    padding: 8px;
+
+}
+
+.c-in {
+    background-color: #1f2029;
+
+}
+
+form h2 {
+    font-size: 40px;
+    margin: 0;
+    color: #c4c3ca;
+}
+
+
+form input {
+    border: none;
+    outline: none;
+    padding: 10px;
+    background-color: #1f2029;
+    direction: rtl;
+}
+
+form input::placeholder {
+    color: var(--yellow);
+}
+
+form button {
+
+    width: 100px;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
 }
