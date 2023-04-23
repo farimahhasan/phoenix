@@ -1,12 +1,12 @@
 import React from 'react';
 import Heading from './Heading';
-import Slider from './Slider';
+import FamousPoets from './FamousPoets';
 
 const Home = () => {
     return (
         <>
            <Heading />
-           <Slider /> 
+           <FamousPoets /> 
         </>
     );
 };
