@@ -9,6 +9,7 @@ import Category from './compoents/Category';
 import Poem from './compoents/Poem';
 import Form from './compoents/Form';
 import Home from './compoents/Home';
+import FamousPoets from './compoents/FamousPoets';
 
 
 import { Route, Routes} from 'react-router-dom';
@@ -17,7 +18,7 @@ const App = () => {
   return (
 <>
       <Header />
-      <main className='container'>
+      <main>
           
           {/* <Details/>
            <Form/>  */}
@@ -30,6 +31,7 @@ const App = () => {
           <Route path="/category/:id" element={<Category />} />
           <Route path="/poem/:id" element={<Poem />} />
           <Route path="/login" element={<Form />} />
+          <Route path="/famouspoets" element={<FamousPoets />}/>
           {/* <Route path="/search" element={<Cartsearch/>} />        */}
       </Routes>
       </main>

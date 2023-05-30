@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import arrow_icon from '../images/arrow_icon.svg'
+import arrow_icon from '../images/arrow-small-right 1.svg'
 import axios from 'axios';
 
 
@@ -35,34 +35,36 @@ const Details = () => {
                     </div>
                 </div>
             }
-            <section data-aos="zoom-in" data-aos-duration="1000" className='row align-items-center ' id="details">
+            <section data-aos="zoom-in" data-aos-duration="1000" className='row align-items-center justify-content-center ' id="details">
 
-                <div className='col-md-2 col-sm-12 col-12 '>
+                <div className='col-md-5 col-sm-10 col-10 border-cart py-5 px-3 bg_dark position-relative mt-5'>
                     <div className='row'>
-                        <div className='col-12  '>
-                            {poet.poet && <h2 className='heading color_yellow'>{poet.poet.name}</h2>}
-                        </div>
-                        <div className='col-12 ' >
-                            {
-                                poet.poet &&
-                                <img src={`https://api.ganjoor.net${poet.poet.imageUrl}`} alt={poet.poet.name} />
-                            }
+                        <div className='col-12'>
+                            <div className='row align-items-center justify-content-center'>
+                                <div className='col-12 text-center '>
+                                    {poet.poet && <h2 className='heading color_yellow'>{poet.poet.name}</h2>}
+                                </div>
+                                <div className='col-12 text-center'>
+                                    {
+                                        poet.poet &&
+                                        <img src={`https://api.ganjoor.net${poet.poet.imageUrl}`} alt={poet.poet.name} />
+                                    }
+                                </div>
+                            </div>
                         </div>
 
-
-                    </div>
+                        <div className='col-12'>
+                            <p className='color_yellow bg_dark py-2' >
+                                {poet.poet && poet.poet.description}
+                            </p>
+                        </div></div>
                 </div>
 
-                <div className='col-md-6 col-sm-11 col-11   text-center '>
-                    <p className='color_yellow bg_dark py-2' >
-                        {poet.poet && poet.poet.description}
-                    </p>
-                </div>
-                <div className='col-12 pb-5 d-flex flex-md-row flex-sm-column flex-column text-center'>
+                <div className='col-12 mt-5 pb-5 d-flex flex-md-row flex-sm-column flex-column text-center justify-content-center'>
                     {poet.cat && poet.cat.children.map(item =>
                     (
                         <Link key={item.id} to={`/category/${item.id}`} className="text-decoration-none ">
-                            <button key={item.id} className='button-home color_yellow  p-2 px-3'>
+                            <button className='button-home color_yellow  p-2 px-3'>
 
                                 <img src={arrow_icon} alt="arrow icon" />
 

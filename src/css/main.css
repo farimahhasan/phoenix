@@ -1,5 +1,5 @@
 :root {
-    --dark: #1b1b1b;
+    --dark: #523506;
     /* --dark:#EAE6E3; */
     /* --yellow:#6b533f; */
     --yellow: #efdec4;
@@ -54,7 +54,88 @@
     right: 0;
 }
 
-header a:hover {
+
+header{
+    z-index: 5;
+}
+header img{
+    width:20px;
+    margin: 5px;
+}
+@media screen and (max-width:768px){
+
+    header nav{
+        bottom: 20px;
+        left: 15px;
+        right: 15px;
+        border: 1px solid var(--dark);
+        padding: 12px 0;
+        border-radius: 20px 20px 0 0;
+    }
+    header a{
+        margin:0 6px;
+    
+    }
+    #home-section > img{
+        width: 100%;
+        opacity: 30%;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+    }
+}
+
+
+
+@media screen and (min-width:768px){
+    header nav{
+       top:0;
+       bottom: 0;
+       right: 25px;
+    }
+    header li{
+        margin:6px 0;
+    }
+    h1{
+        font-size: 4em;
+    }
+  
+    #home-section > img{
+        left: 0;
+        top: 50%;
+        bottom: 0;
+        width: 60%;
+        transform: translateY(-50%);
+       /* height: 100%;*/
+        opacity: 50%;
+    }
+    #home-section h2{
+        font-size: 2em;
+    }
+}
+
+
+button img{
+    width: 20px;
+}
+a button{
+    border: 1px solid var(--dark);
+    border-radius: 20px 20px 0 0;
+    background: none;
+    
+}
+
+
+#home-section{
+    background-image: url(../images/oldpaper.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* header a:hover {
     color: #fff3cb;
 }
 
@@ -127,7 +208,7 @@ header #search-input::placeholder {
 }
 
 
-/*heading*/
+/*heading
 #img-head1 {
     left: -10px;
     top: 10px;
@@ -170,20 +251,45 @@ h1 {
         height: 50vh;
     }
 }
- */
+ 
 
 .button-home {
     border: 1px solid var(--yellow);
     background: var(--dark);
+
 }
 
 
 
 
-/*details*/
-#details {}
+/*details
+#details {
 
-/*poem*/
+}
+#details .border-cart{
+    border: 1px solid var(--yellow);
+    border-radius: 500px 500px 0 0;
+
+}
+#details .border-cart::after{
+    content: "";
+    position: absolute;
+    border-radius: 500px 500px 0 0;
+     width: 100%;
+     height: 100%;
+     background-image: url(../images/0001\ 1.png);
+     background-size: cover;
+     background-position:top ;
+     background-repeat: no-repeat;
+     z-index: -1;
+     top:-10%;
+     left: 20%;
+}
+#details p{
+    text-align: justify;
+}
+
+/*poem
 .b {
     display: flex;
     justify-content: space-between;
@@ -194,7 +300,24 @@ h1 {
 
     width: 50%;
 }
+@media screen and (max-width:768px){
+    .b{
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+    
+.b div {
 
+    width: 100%;
+}
+
+}
+
+
+.previous-poem-icon{
+    transform: rotate(180deg);
+}
 
 
 form {
@@ -237,4 +360,4 @@ form button {
     border: none;
     padding: 15px;
     cursor: pointer;
-}
+} */

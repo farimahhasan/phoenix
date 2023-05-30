@@ -2,7 +2,7 @@ import React , {useState , useEffect} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 
-import arrow_icon from '../images/arrow_icon.svg'
+import arrow_icon from '../images/arrow-small-right 1.svg'
 
 
 const FamousPoets= () => {
