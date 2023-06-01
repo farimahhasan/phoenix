@@ -1,12 +1,18 @@
 import React, { useState, useEffect} from 'react';
 import useAuth from '../hooks/useAuth';
 import axios from 'axios';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+
 //import email_icon from '../images/email_icon.svg'
 //import lock_icon from '../images/lock_icon.svg'
 
 const Form = () => {
 
     const { setAuth } = useAuth();
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
+    console.log(location.state?.from?.pathname)
 
     const [data, setData] = useState({
         name: "",
@@ -15,7 +21,6 @@ const Form = () => {
     })
     const [error, setError] = useState('')
 
-    const [success, setSuccess] = useState(false)
 
     useEffect(() => {
         setError('');
@@ -34,7 +39,7 @@ const Form = () => {
                 const accessToken = response?.data?.token;
                 //axios.defaults.headers.common["Authorization"] = "Bearer " + accessToken
                 setAuth({ data, accessToken })
-                setSuccess(true)
+                navigate(from, { replace: true });
             })
             .catch(error => {
                 if(error?.response){
@@ -80,10 +85,7 @@ const Form = () => {
 
 
     return (
-        <>
-            {
-                success ? (<p> موفقیت </p>)
-                    : (
+ 
                         <>
                             <p>{error}</p>
                             <form method='post' onSubmit={postHandler} className='row justify-content-center'>
@@ -113,9 +115,7 @@ const Form = () => {
                                 </div>
 
                             </form>
-                        </>
-                    )
-            }
+       
         </>
     );
 };

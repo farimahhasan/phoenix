@@ -38,7 +38,6 @@ const App = () => {
 
           <Route element={<RequireAuth />}>
           <Route path="/package" element={<Package />} />
-
         </Route>
 
           {/* <Route path="/search" element={<Cartsearch/>} />        */}
