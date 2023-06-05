@@ -3,6 +3,7 @@ import useAuth from '../hooks/useAuth';
 import axios from 'axios';
 import { Link, useNavigate, useLocation, Navigate } from 'react-router-dom';
 import Package from './Package';
+import { motion } from 'framer-motion';
 
 //import email_icon from '../images/email_icon.svg'
 //import lock_icon from '../images/lock_icon.svg'
@@ -107,34 +108,72 @@ const Form = () => {
     :
 
         <>
-            <p>{error}</p>
-            <form method='post' onSubmit={postHandler} className='row justify-content-center'>
-                <div className="col-12   ">
-                    <div className='row justify-content-center'>
-                        <input type="text" placeholder="نام شما" className='color_yellow' name="name" value={data.name} onChange={changeHandler} />
+        <motion.section
+        initial={{opacity:0}}
+        animate={{opacity:1}}
+        transition={{duration:0.75 , ease:"easeOut"}}
+        exit={{opacity:0}}
+        className='container vh-100 d-flex align-items-center ' id="login-section">
+                       <p>{error}</p>
 
-                        <div className='col-md-3 col-sm-10 col-10 c-in d-flex align-items-center justify-content-between'>
-                            {/* <img src={email_icon} alt='email icon' /> */}
-                            <input type="email" placeholder=" پست الکترونیکی شما" className='color_yellow' required name="email" value={data.email} onChange={changeHandler} />
-                        </div>
-                    </div>
-                </div>
-                <br />
-                <div className=" col-12  ">
-                    <div className='row justify-content-center'>
-                        <div className='col-md-3 col-sm-10 col-10 c-in d-flex align-items-center justify-content-between'>
-                            {/* <img src={lock_icon} alt='lock icon' /> */}
-                            <input type="password" className='color_yellow' placeholder="گذرواژه شما" required name="password" value={data.password} onChange={changeHandler} />
-                        </div>
-                    </div>
-                </div>
 
-                <br />
-                <div className='col-12 text-center'>
-                    <button className="bg_yellow color_dark">ارسال</button>
-                </div>
+            <form method='post' onSubmit={postHandler} autocomplete='off' className='form'>
 
-            </form>
+  <div className='control block-cube block-input'>
+    <input type="text" placeholder="نام شما" className='color_yellow' name="name" value={data.name} onChange={changeHandler}/>
+    <div className='bg-top'>
+      <div className='bg-inner'></div>
+    </div>
+    <div className='bg-right'>
+      <div className='bg-inner'></div>
+    </div>
+    <div className='bg'>
+      <div className='bg-inner'></div>
+    </div>
+  </div>
+  <div className='control block-cube block-input'>
+    <input type="email" placeholder=" پست الکترونیکی شما" className='color_yellow' required name="email" value={data.email} onChange={changeHandler}/>
+    <div className='bg-top'>
+      <div className='bg-inner'></div>
+    </div>
+    <div className='bg-right'>
+      <div className='bg-inner'></div>
+    </div>
+    <div className='bg'>
+      <div className='bg-inner'></div>
+    </div>
+  </div>
+  <div className='control block-cube block-input'>
+    <input type="password" className='color_yellow' placeholder="گذرواژه شما" required name="password" value={data.password} onChange={changeHandler} minLength={8}/>
+    <div className='bg-top'>
+      <div className='bg-inner'></div>
+    </div>
+    <div className='bg-right'>
+      <div className='bg-inner'></div>
+    </div>
+    <div className='bg'>
+      <div className='bg-inner'></div>
+    </div>
+  </div>
+  <button className='btn block-cube block-cube-hover' type='button'>
+    <div className='bg-top'>
+      <div className='bg-inner'></div>
+    </div>
+    <div className='bg-right'>
+      <div className='bg-inner'></div>
+    </div>
+    <div className='bg'>
+      <div className='bg-inner'></div>
+    </div>
+    <div className='text'>
+      نام نویسی
+    </div>
+  </button>
+
+</form>
+        </motion.section>
+ 
+
         </>
 
 }</>

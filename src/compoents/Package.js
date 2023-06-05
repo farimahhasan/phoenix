@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
-
+import { motion } from 'framer-motion';
 const Package = () => {
     
     useEffect(()=>{
@@ -26,9 +26,15 @@ const Package = () => {
     //axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('access_token')}`;
 
     return (
-        <div>
+        <motion.section 
+        initial={{opacity:0}}
+        animate={{opacity:1}}
+        transition={{duration:0.75 , ease:"easeOut"}}
+        exit={{opacity:0}}
+        className='h-100'
+        >
             <h3>salam</h3>
-        </div>
+        </motion.section>
     );
 };
 

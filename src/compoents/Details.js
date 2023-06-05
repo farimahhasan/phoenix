@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import arrow_icon from '../images/arrow-small-right 1.svg'
 import axios from 'axios';
+import { motion } from 'framer-motion';
 
 
 const Details = () => {
@@ -22,6 +23,7 @@ const Details = () => {
             setPoet(response.data)
         }
         fetchAPI();
+        window.scrollTo(0,0);
     }, [])
 
 
@@ -29,60 +31,65 @@ const Details = () => {
         <>
 
             {
-                !poet.cat && <div className='container-spinner position-absolute d-flex align-items-center vh-100 w-100 justify-content-center bg_dark'>
-                    <div className="spinner-grow color_yellow  " role="status">
+                !poet.cat ? <div className='container-spinner position-absolute d-flex align-items-center vh-100 w-100 justify-content-center bg_dark'>
+                    <div className="spinner-grow color_white  " role="status">
                         <span className="visually-hidden">Loading...</span>
                     </div>
-                </div>
-            }
-            <section data-aos="zoom-in" data-aos-duration="1000" className='row align-items-center justify-content-center ' id="details">
+                </div>:
+                  <motion.section 
+            initial={{opacity:0}}
+            animate={{opacity:1}}
+            transition={{duration:0.75 , ease:"easeOut"}}
+            exit={{opacity:0}} className=' d-flex align-items-center justify-content-center ' id="details-section">
 
-                <div className='col-md-5 col-sm-10 col-10 border-cart py-5 px-3 bg_dark position-relative mt-5'>
-                    <div className='row'>
-                        <div className='col-12'>
-                            <div className='row align-items-center justify-content-center'>
-                                <div className='col-12 text-center '>
-                                    {poet.poet && <h2 className='heading color_yellow'>{poet.poet.name}</h2>}
-                                </div>
-                                <div className='col-12 text-center'>
+                <div className="main">
+                    <div className="cards">
+                        <div className="cards_item">
+                            <div className="card">
+                                <div className="card_image mt-2">
                                     {
                                         poet.poet &&
                                         <img src={`https://api.ganjoor.net${poet.poet.imageUrl}`} alt={poet.poet.name} />
                                     }
                                 </div>
+                                <div className="card_content">
+                                    <h2 className="card_title color_dark">
+                                        {poet.poet && poet.poet.name}
+                                    </h2>
+                                    <div className="card_text ">
+                                        <p className='color_dark'>
+                                            {poet.poet && poet.poet.description}
+                                        </p>
+                                        <hr />
+                                        <p className='d-flex flex-column justify-content-center align-items-center'>
+                                            {poet.cat && poet.cat.children.map(item =>
+                                            (
+                                                <Link key={item.id} to={`/category/${item.id}`} className="mt-2 text-decoration-none ">
+                                                    <button  className='   button-link bg_dark color_white p-2 px-3'>
+
+                                                        <img src={arrow_icon} alt="arrow icon" />
+
+
+                                                        {item.title}
+
+                                                    </button>
+                                                </Link>
+
+                                            )
+                                            )}
+
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
-                        <div className='col-12'>
-                            <p className='color_yellow bg_dark py-2' >
-                                {poet.poet && poet.poet.description}
-                            </p>
-                        </div></div>
-                </div>
-
-                <div className='col-12 mt-5 pb-5 d-flex flex-md-row flex-sm-column flex-column text-center justify-content-center'>
-                    {poet.cat && poet.cat.children.map(item =>
-                    (
-                        <Link key={item.id} to={`/category/${item.id}`} className="text-decoration-none ">
-                            <button className='button-home color_yellow  p-2 px-3'>
-
-                                <img src={arrow_icon} alt="arrow icon" />
-
-
-                                {item.title}
-
-                            </button>
-                        </Link>
-
-                    )
-                    )}
-
+                    </div>
                 </div>
 
 
-
-
-            </section >
+            </motion.section >
+            } 
+          
         </>
     );
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link} from 'react-router-dom';
+import { NavLink} from 'react-router-dom';
 
 import home from '../images/home 1.svg'
 import person_icon from '../images/user 1.svg'
@@ -47,24 +47,28 @@ const Header = () => {
            <nav className='d-flex align-items-center position-fixed justify-content-center'> 
                 <ul className='m-0 p-0 d-flex flex-md-column flex-sm-row flex-row list-unstyled'> 
                    <li>
-                     <Link to={'/'} className=' text-decoration-none' >
+                     <NavLink to={'/'}
+                     className={(navData) => navData.isActive ? "active-link  text-decoration-none header-link position-relative" : " text-decoration-none header-link position-relative" }>
                         <img src={home} alt="home icon" />
-                     </Link>
+                        <span className='position-absolute'>صفحه اصلی</span>
+                     </NavLink>
                    </li> 
                    <li>
-                   <Link to={'/login'} className=' text-decoration-none '>
+                   <NavLink to={'/login'} className={(navData) => navData.isActive ? "active-link text-decoration-none header-link position-relative" : " text-decoration-none header-link position-relative" }>
                    <img src={person_icon} alt="user icon" />
-                    </Link>  
+                   <span className='position-absolute'>نام نویسی</span>
+                    </NavLink>  
                    </li>
                    <li>
-                   <Link to={'/'} className='text-decoration-none'>
+                   <NavLink to={'/package'} className={(navData) => navData.isActive ? "active-link text-decoration-none header-link position-relative" : " text-decoration-none header-link position-relative" }>
                    <img src={bag_icon} alt="bag icon" />
-                    </Link>  
+                   <span className='position-absolute'>سبد خرید</span>
+                    </NavLink>  
                    </li>
                    <li>
-                   <Link to={'/search'} className='text-decoration-none'>
+                   {/* <Link to={'/search'} className='text-decoration-none'>
                    <img src={search} alt="search icon" />
-                    </Link>  
+                    </Link>   */}
                    </li>
                 </ul>
            </nav>

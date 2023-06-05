@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
+import { motion } from 'framer-motion';
 
 
 
@@ -15,6 +16,7 @@ const Category = () => {
     }
 
     useEffect(() => {
+        window.scrollTo(0, 0);
         const fetchAPI = async () => {
             const response = await getCat();
             console.log(response.data)
@@ -26,37 +28,46 @@ const Category = () => {
 
     return (
         <>
-         {
+            {
                 !cat.cat && <div className='container-spinner position-absolute d-flex align-items-center vh-100 w-100 justify-content-center bg_dark'>
-                    <div className="spinner-grow color_yellow  " role="status">
+                    <div className="spinner-grow color_white  " role="status">
                         <span className="visually-hidden">Loading...</span>
                     </div>
                 </div>
             }
 
-       
-        <section className='mt-5'>
-            {cat.cat &&
-                cat.cat.poems.map(item => (
-                    <div key={item.id}>
-                    <Link to={`/poem/${item.id}`} className='color_yellow'>{item.title} {item.excerpt}</Link >
-                    </div>
-                ))
-            }
 
-            {
-                cat.cat && cat.cat.children &&
-                cat.cat.children.map(item=>(
-                    <div key={item.id} >
-                    <Link to={`/category/${item.id}`}
-                   onClick={getCat()} className='color_yellow'>{item.title}  {item.excerpt}</Link>
-                    </div>
+            <motion.section
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.75, ease: "easeOut" }}
+                exit={{ opacity: 0 }}
+                className='container row justify-content-center mx-auto mt-5'>
+                {cat.cat &&
+                    cat.cat.poems.map(item => (
+                        <div className='col-md-5 col-sm-12 col-12 text-center' key={item.id}>
+                            <div className=" mx-auto category-component category-content">
+                                <Link to={`/poem/${item.id}`} className='color_white text-decoration-none'>{item.title} : {item.excerpt}</Link >
+                            </div>
+                        </div>
+                    ))
+                }
 
-                )) 
-            
-            }
+                {
+                    cat.cat && cat.cat.children &&
+                    cat.cat.children.map(item => (
 
-        </section>
+                        <div className='col-md-5 col-sm-12 col-12 text-center' key={item.id}>
+                            <div className=" mx-auto category-component category-content d-flex align-items-center justify-content-center">
+                                <Link to={`/category/${item.id}`} onClick={getCat()}
+                                    className='color_white text-decoration-none'>{item.title} {item.excerpt}</Link >
+                            </div>
+                        </div>
+                    ))
+
+                }
+
+            </motion.section>
         </>
     );
 };

@@ -31,8 +31,8 @@ const Poem = () => {
     return (
         <>
             {
-                !poem.htmlText && <div className='container-spinner position-absolute d-flex align-items-center vh-100 w-100 justify-content-center bg_dark'>
-                    <div className="spinner-grow color_yellow  " role="status">
+                !poem.htmlText && <div className='container-spinner position-absolute d-flex align-items-center vh-100 w-100 justify-content-center bg_dark '>
+                    <div className="spinner-grow color_white  " role="status">
                         <span className="visually-hidden">Loading...</span>
                     </div>
                 </div>
@@ -44,7 +44,7 @@ const Poem = () => {
                     {
                         poem.next &&
                         <Link key={poem.next.id} to={`/poem/${poem.next.id}`} onClick={getPoem()} className="text-decoration-none ">
-                            <button className='button-home color_yellow  p-2 px-3'>
+                            <button className=' color_white pereviouse button-link  p-2 px-3'>
 
                                 <img src={arrow_icon} alt="arrow icon" />
 
@@ -58,7 +58,7 @@ const Poem = () => {
                 </div>
 
                 {
-                    poem.htmlText && <div className='color_yellow mt-5' dangerouslySetInnerHTML={{ __html: `${poem.htmlText}` }}></div>
+                    poem.htmlText && <div className='color_white pereviouse mt-5' dangerouslySetInnerHTML={{ __html: `${poem.htmlText}` }}></div>
 
                 }
 
@@ -66,7 +66,7 @@ const Poem = () => {
                     {
                         poem.previous &&
                         <Link key={poem.previous.id} to={`/poem/${poem.previous.id}`} onClick={getPoem()} className="text-decoration-none ">
-                            <button className='button-home color_yellow  p-2 px-3 '>
+                            <button className='color_white pereviouse button-link  p-2 px-3 '>
                                 {poem.previous.title} {/* : {poem.previous.excerpt} */}
                                 <img src={arrow_icon} className='previous-poem-icon' alt="arrow icon" />
                             </button>
@@ -79,7 +79,7 @@ const Poem = () => {
                     poem.recitations && poem.recitations.map((item) => (
                         <div key={item.id}>
                             <audio controls src={item.mp3Url} ></audio>
-                            <p className='color_yellow'>{item.audioArtist}</p>
+                            <p className='color_white pereviouse'>{item.audioArtist}</p>
                         </div>
                     ))
                 }
