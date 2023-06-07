@@ -63,6 +63,7 @@ const Form = () => {
 
         } else if (error?.response?.status === 401) {
           setError('شما قبلا ثبت نام کردی ')
+          
         } else {
           setError('نام نویسی ناموفق بود')
         }

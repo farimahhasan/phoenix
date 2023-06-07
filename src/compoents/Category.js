@@ -49,7 +49,7 @@ const Category = () => {
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.75, ease: "easeOut" }}
                   exit={{ opacity: 0 }}
-                  className='container row justify-content-center mx-auto mt-5' id='cat-section'>
+                  className='container row justify-content-center mx-auto mt-5 align-items-center' id='cat-section'>
   
                   <div class="search-cat col-12 text-center mb-5">
                       <div>
@@ -60,8 +60,8 @@ const Category = () => {
   
   
                       searchCat.map(item =>
-                          <div className='col-md-5 col-sm-12 col-12 text-center' key={item.id}>
-                              <div className=" mx-auto category-component category-content">
+                          <div className='col-md-5 col-sm-12 col-12 text-center ' key={item.id}>
+                              <div className=" mx-auto category-component category-content d-flex justify-content-center align-items-center">
                                   <Link to={`/poem/${item.id}`} className='color_white text-decoration-none'>{item.title} : {item.excerpt}</Link >
                               </div>
                           </div>
@@ -81,7 +81,7 @@ const Category = () => {
                       cat.cat && searchChild &&
                       searchChild.map(item => (
   
-                          <div className='col-md-5 col-sm-12 col-12 text-center' key={item.id}>
+                          <div className='col-md-5 col-sm-12 col-12 text-center ' key={item.id}>
                               <div className=" mx-auto category-component category-content d-flex align-items-center justify-content-center">
                                   <Link to={`/category/${item.id}`} onClick={getCat()}
                                       className='color_white text-decoration-none'>{item.title} {item.excerpt}</Link >

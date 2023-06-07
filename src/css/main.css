@@ -134,79 +134,9 @@ header nav{
     background-color: var(--white);
     padding: 0 5px;
     right: 0;
+    border-radius: 20px 20px 0 0;
 }
 
-@media screen and (max-width:768px) {
-
-    header nav {
-        bottom: 10px;
-        left: 15px;
-        right: 15px;
-        border: 1px solid var(--dark);
-        padding: 12px 0;
-        border-radius: 20px 20px 0 0;
-       
-    }
-
-    header a {
-        margin: 0 6px;
-
-    }
- 
-
-    .header-link span {
-        left: 50%;
-        top: 300%;
-        transform: translate(-50%, -300%);
-    }
-
-    #home-section>img {
-        width: 100%;
-        opacity: 30%;
-        top: 50%;
-        left: 0;
-        transform: translateY(-50%);
-        z-index: -1;
-        filter: grayscale(100%);
-
-    }
-}
-
-
-
-@media screen and (min-width:768px) {
-    header nav {
-        top: 0;
-        bottom: 0;
-        right: 25px;
-    }
-
-    header li {
-        margin: 6px 0;
-    }
-
-    h1 {
-        font-size: 4em;
-    }
-
-    #home-section>img {
-        left: 0;
-        top: 50%;
-        bottom: 0;
-        width: 50%;
-        transform: translateY(-50%);
-        /* height: 100%;*/
-        opacity: 50%;
-        z-index: -1;
-        filter: grayscale(100%);
-
-
-    }
-
-    #home-section h2 {
-        font-size: 2em;
-    }
-}
 
 
 .button-link img {
@@ -217,6 +147,9 @@ header nav{
     border: 1px solid #ffff;
     border-radius: 20px 20px 0 0;
     background: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .button-link:hover {
@@ -243,7 +176,7 @@ header nav{
     background: var(--white);
     border-radius: 20px 20px 0 0;
     border: 1px solid var(--dark);
-    transform: rotate(-2.57576197461427deg);
+    transform: rotate(-2.57576197461427deg) scale(1);
     height: 200px;
 }
 
@@ -293,6 +226,13 @@ header nav{
   }
 
 
+  @media screen and (max-width:1400px) and (min-width:768px){
+    .card-poets{
+      flex: 0 0 auto;
+      width: 25%;
+    }
+  }
+  
 
 
 .main {
@@ -619,7 +559,7 @@ hr {
     margin: 1rem;
     margin-bottom: 20px;
     border-radius: 6px;
-    height: 100px;
+    min-height: 100px;
     width: 100%;
   }
   
@@ -634,7 +574,13 @@ hr {
   #poem-section{
     overflow-x: hidden;
   }
-
+  .poem-icon{
+    cursor: pointer;
+  }
+.poem-icon img{
+  width: 1.1em;
+  margin-left: 5px;
+}
   /* #poem-section::after{
     content: "";
     background:url(../images/bSidebg.png);
@@ -663,10 +609,11 @@ hr {
     align-items: center;
     justify-content: center;
     font-family: "Caveat", cursive;
-    box-shadow: 1px 1px 2px  #1a1a1a;
-    ;
+    box-shadow: 1px 1px 2px  #1a1a1a;;
     margin: auto;
     margin-top: 50px;
+    padding: 15px;
+  
   }
   
 
@@ -726,6 +673,9 @@ hr {
     justify-content: space-around;
     text-align: center;
   }
+  .n{
+    text-align: justify;
+  }
   @media screen and (max-width:1125px){
     .b{
         flex-direction: column;
@@ -778,4 +728,77 @@ hr {
   .search-cat > div > input:not(:placeholder-shown) {
     width: 250px;
   }
+  @media screen and (max-width:768px) {
+
+    header nav {
+        bottom: 5px;
+        left: 15px;
+        right: 15px;
+        border: 1px solid var(--dark);
+        padding: 12px 0;       
+    }
+
+    header a {
+        margin: 0 6px;
+
+    }
+ 
+
+    .header-link span {
+        left: 50%;
+        top: 300%;
+        transform: translate(-50%, -300%);
+    }
+
+    #home-section>img {
+        width: 100%;
+        opacity: 30%;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        z-index: -1;
+        filter: grayscale(100%);
+
+    }
+
+    .card-poets {
+
+      transform: rotate(-2.57576197461427deg) scale(.9);
+
+  }
   
+}
+
+@media screen and (min-width:768px) {
+    header nav {
+        top:10px;
+        bottom: 0;
+        right: 12px;
+    }
+
+    header li {
+        margin: 6px 0;
+    }
+
+    h1 {
+        font-size: 4em;
+    }
+
+    #home-section>img {
+        left: 0;
+        top: 50%;
+        bottom: 0;
+        width: 50%;
+        transform: translateY(-50%);
+        /* height: 100%;*/
+        opacity: 50%;
+        z-index: -1;
+        filter: grayscale(100%);
+
+
+    }
+
+    #home-section h2 {
+        font-size: 2em;
+    }
+}

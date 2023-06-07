@@ -65,11 +65,11 @@ const Header = () => {
                    <span className='position-absolute'>سبد خرید</span>
                     </NavLink>  
                    </li>
-                   <li>
-                   {/* <Link to={'/search'} className='text-decoration-none'>
+                   {/* <li>
+                   <Link to={'/search'} className='text-decoration-none'>
                    <img src={search} alt="search icon" />
-                    </Link>   */}
-                   </li>
+                    </Link>  
+                   </li> */}
                 </ul>
            </nav>
         </header>
