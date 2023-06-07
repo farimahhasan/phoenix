@@ -40,7 +40,7 @@ const Details = () => {
             initial={{opacity:0}}
             animate={{opacity:1}}
             transition={{duration:0.75 , ease:"easeOut"}}
-            exit={{opacity:0}} className=' d-flex align-items-center justify-content-center ' id="details-section">
+            exit={{opacity:0}} className=' d-flex align-items-center justify-content-center position-relative' id="details-section">
 
                 <div className="main">
                     <div className="cards">

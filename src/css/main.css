@@ -627,3 +627,155 @@ hr {
     margin: 0px 20px 20px 20px;
   }
   
+
+
+  /*poem*/
+
+  #poem-section{
+    overflow-x: hidden;
+  }
+
+  /* #poem-section::after{
+    content: "";
+    background:url(../images/bSidebg.png);
+    background-repeat: no-repeat;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: -80%;
+    top:-30%;
+    transform: rotate(180deg);
+  z-index: -1;
+  } */
+
+  .paper {
+    position: relative;
+    background: linear-gradient(
+        to bottom right,
+         #1a1a1a,
+        20%,
+        rgba(255, 255, 255, 0)
+      ),
+       #3d3c3c;
+    min-width: 250px;
+    min-height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Caveat", cursive;
+    box-shadow: 1px 1px 2px  #1a1a1a;
+    ;
+    margin: auto;
+    margin-top: 50px;
+  }
+  
+
+  
+  .tape-section {
+    position: absolute;
+    width: 100%;
+  }
+  
+
+  .tape-section:first-of-type {
+    top: 0;
+  }
+  
+  .tape-section:last-of-type {
+    bottom: 0;
+  }
+  
+  .tape-section::before,
+  .tape-section::after {
+    content: "";
+    width: 10vmin;
+    height: 4vmin;
+    position: absolute;
+    background-color: #dbd8be;
+    opacity: 0.5;
+    border-right: 1px dotted #b7b49d;
+    border-left: 1px dotted #b7b49d;
+  }
+  
+  .tape-section:last-of-type::after {
+    transform: rotate(-45deg);
+    right: -4vmin;
+    top: -3vmin;
+  }
+  
+  .tape-section:first-of-type::before {
+    transform: rotate(-45deg);
+    left: -4vmin;
+  }
+  
+  .tape-section:first-of-type::after {
+    transform: rotate(45deg);
+    right: -4vmin;
+    top: 0;
+  }
+  
+  .tape-section:last-of-type::before {
+    transform: rotate(45deg);
+    left: -4vmin;
+    bottom: 0;
+  }
+
+  .b{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    text-align: center;
+  }
+  @media screen and (max-width:1125px){
+    .b{
+        flex-direction: column;
+    }
+  }
+
+
+
+  .search-cat > div {
+    
+    display: inline-block;
+    position: relative;
+  }
+  
+  .search-cat > div:after {
+    content: "";
+    background: white;
+    width: 4px;
+    height: 20px;
+    position: absolute;
+    top: 20px;
+    right: -3px;
+    transform: rotate(135deg);
+  }
+  
+  .search-cat > div > input {
+    color: white;
+    font-size: 16px;
+    background: transparent;
+    width: 30px;
+    height: 30px;
+    padding: 10px;
+    border: solid 3px white;
+    outline: none;
+    border-radius: 35px;
+    transition: width 0.5s;
+  }
+  
+  .search-cat > div > input::placeholder {
+    color: #efefef;
+    opacity: 0;
+    transition: opacity 150ms ease-out;
+  }
+  
+  .search-cat > div > input:focus::placeholder {
+    opacity: 1;
+  }
+  
+  .search-cat > div > input:focus,
+  .search-cat > div > input:not(:placeholder-shown) {
+    width: 250px;
+  }
+  
