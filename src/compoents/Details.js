@@ -12,7 +12,7 @@ const Details = () => {
     const [poet, setPoet] = useState({})
 
     const getPoet = async () => {
-        const response = await axios.get(`https://api.ganjoor.net/api/ganjoor/poet/${params.id}`);
+        const response = await axios.get(`https://api.ganjoor.net/api/ganjoor/poet?url=/${params.fullUrl}`);
         return response;
     }
 
@@ -64,7 +64,7 @@ const Details = () => {
                                         <p className='d-flex flex-column justify-content-center align-items-center'>
                                             {poet.cat && poet.cat.children.map(item =>
                                             (
-                                                <Link key={item.id} to={`/category/${item.id}`} className="mt-2 text-decoration-none ">
+                                                <Link key={item.id} to={`/category${item.fullUrl}`} className="mt-2 text-decoration-none ">
                                                     <button  className='   button-link bg_dark color_white p-2 px-3'>
 
                                                         <img src={arrow_icon} alt="arrow icon" />

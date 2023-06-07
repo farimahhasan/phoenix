@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 
 const Category = () => {
     const params = useParams();
+    console.log(params.fullUrl)
 
     const [cat, setCat] = useState({})
     const [search, setSearch] = useState("");
@@ -14,7 +15,7 @@ const Category = () => {
 
 
     const getCat = async () => {
-        const response = await axios.get(`https://api.ganjoor.net/api/ganjoor/cat/${params.id}`);
+        const response = await axios.get(`https://api.ganjoor.net/api/ganjoor/cat?url=/${params.fullUrl}/${params.fullUrl2}`);
         return response;
     }
 
@@ -62,7 +63,7 @@ const Category = () => {
                       searchCat.map(item =>
                           <div className='col-md-5 col-sm-12 col-12 text-center ' key={item.id}>
                               <div className=" mx-auto category-component category-content d-flex justify-content-center align-items-center">
-                                  <Link to={`/poem/${item.id}`} className='color_white text-decoration-none'>{item.title} : {item.excerpt}</Link >
+                                  <Link to={`/poem${cat.cat.fullUrl}/${item.urlSlug}`} className='color_white text-decoration-none'>{item.title} : {item.excerpt}</Link >
                               </div>
                           </div>
   
@@ -83,7 +84,7 @@ const Category = () => {
   
                           <div className='col-md-5 col-sm-12 col-12 text-center ' key={item.id}>
                               <div className=" mx-auto category-component category-content d-flex align-items-center justify-content-center">
-                                  <Link to={`/category/${item.id}`} onClick={getCat()}
+                                  <Link to={`/category${item.fullUrl}`} onClick={getCat()}
                                       className='color_white text-decoration-none'>{item.title} {item.excerpt}</Link >
                               </div>
                           </div>

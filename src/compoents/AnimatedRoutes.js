@@ -26,11 +26,11 @@ const AnimatedRoutes = () => {
                     <Route path="/details/:id" element={<Details />} />
                     {/* <Route path="search/details/:id" element={<Details />} /> */}
                     <Route path="/" element={<Home />} />
-                    <Route path="/category/:id" element={<Category />} />
-                    <Route path="/poem/:id" element={<Poem />} />
+                    <Route path="/category/:fullUrl/:fullUrl2" element={<Category />} />
+                    <Route path="/poem/:fullUrl/:fullUrl2/:fullUrl3" element={<Poem />} />
                     <Route path="/login" element={<Form />} />
                     <Route path="/poets" element={<Poets />} />
-                    <Route path="/poets/details/:id" element={<Details />} />
+                    <Route path="/poets/details/:fullUrl" element={<Details />} />
                     {/* <Route path="unauthorized" element={<Unauthorized />} /> */}
                     <Route element={<RequireAuth />}>
                         <Route path="/package" element={<Package />} />
