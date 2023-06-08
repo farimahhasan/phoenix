@@ -17,6 +17,11 @@
     src: url(../fonts/Lalezar-Regular.ttf);
 }
 
+@font-face {
+  font-family: danstevis;
+  src: url(../fonts/danstevis.otf);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -33,6 +38,10 @@ a:hover{
 body {
  background-color: var(--dark); 
     overflow-x: hidden;
+}
+
+section{
+  margin-bottom: 100px;
 }
 
 .heading {
@@ -728,6 +737,15 @@ hr {
   .search-cat > div > input:not(:placeholder-shown) {
     width: 250px;
   }
+
+
+  #missing-section{
+    background-image:url(../images/headingbg.png) ;
+    background-size: 30%;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+
   @media screen and (max-width:768px) {
 
     header nav {
@@ -765,6 +783,8 @@ hr {
 
       transform: rotate(-2.57576197461427deg) scale(.9);
 
+  }  #missing-section h2{
+    font-size: 1.2em;
   }
   
 }
@@ -802,3 +822,16 @@ hr {
         font-size: 2em;
     }
 }
+
+
+@media screen and (max-width:1200px) {
+  
+  #missing-section{
+    background-size: 55%;
+  }
+
+}
+
+
+
+

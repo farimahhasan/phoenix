@@ -72,7 +72,7 @@ const Poets = () => {
                                                     //  </div>
 
                                                     <div className="card-poets position-relative mt-4 col-md col-sm-4 col-5 text-center" key={p.id}>
-                                                        <Link to={`/details${p.fullUrl}`} className="text-decoration-none">
+                                                        <Link to={`details${p.fullUrl}`} className="text-decoration-none">
 
                                                             <div className="face face1">
                                                                 <img className='' src={`https://api.ganjoor.net${p.imageUrl}`} alt={p.name} />

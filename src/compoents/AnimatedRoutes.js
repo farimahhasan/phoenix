@@ -5,15 +5,16 @@ import Poem from './Poem';
 import Form from './Form';
 import Home from './Home';
 import Package from './Package';
-
 import RequireAuth from './RequireAuth';
 import Layout from './Layout';
 import Poets from './Poets';
-
+import Test from './Test';
+import Missing from './Missing';
 
 import { Route, Routes,useLocation } from 'react-router-dom';
 
 import { AnimatePresence } from 'framer-motion';
+
 
 const AnimatedRoutes = () => {
 
@@ -38,7 +39,11 @@ const AnimatedRoutes = () => {
 
                     {/* <Route path="/search" element={<Cartsearch/>} />        */}
 
-                    {/* <Route path="*" element={<Missing />} /> */}
+                    
+
+                    <Route path='/test' element={<Test />} ></Route>
+
+                     <Route path="*" element={<Missing />} /> 
                 </Route>
             </Routes>
         </AnimatePresence>

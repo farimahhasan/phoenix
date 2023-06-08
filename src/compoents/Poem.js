@@ -68,23 +68,23 @@ const Poem = () => {
                             }
 
                             <div className='d-flex justify-content-center mt-md-0 mt-sm-4 mt-4'>
-                                       <span className='button-link p-2 ms-2 poem-icon bg_white '
-                                onClick={() => navigator.clipboard.writeText(`${poem.plainText}`)}
-                            >
+                                <span className='button-link p-2 ms-2 poem-icon bg_white '
+                                    onClick={() => navigator.clipboard.writeText(`${poem.plainText}`)}
+                                >
 
-                                <img src={copy} alt='copy icon' />
-                                <span className='color_dark'>رونوشت</span>
-                            </span>
-                            <span className='button-link p-2 me-2 poem-icon bg_white '
-                                
-                            >
+                                    <img src={copy} alt='copy icon' />
+                                    <span className='color_dark'>رونوشت</span>
+                                </span>
+                                <span className='button-link p-2 me-2 poem-icon bg_white '
 
-                                <img src={share} alt='copy icon' />
-                                <span className='color_dark'>همرسانی</span>
-                            </span>
+                                >
+
+                                    <img src={share} alt='copy icon' />
+                                    <span className='color_dark'>همرسانی</span>
+                                </span>
                             </div>
 
-                     
+
                         </div>
 
 
@@ -139,6 +139,17 @@ btn.addEventListener('click', async () => {
 		target="_blank"> Share to WhatsApp </a> 
         <a href = "https://telegram.me/share/url?url=<URL>&text=<TEXT>">Telegram</a> */}
 
+                        {
+                            poem.verses &&
+                            
+                                    poem.verses.map(v => (
+                                        <div className='color_dark' key={v.id}>
+                                            {v.coupletSummary}<br/>
+                                        </div>
+                                    ))
+                             
+                        }
+
 
                         {
                             poem.recitations && poem.recitations.map((item, i) => (
@@ -149,6 +160,10 @@ btn.addEventListener('click', async () => {
                             ))
                         }
 
+                     <Link to={'/test'} className='text-decoration-none color_white'>
+                        <h2> تست خوانش</h2>
+                     </Link>
+                     
 
 
                     </motion.section>
