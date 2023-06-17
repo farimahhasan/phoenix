@@ -5,7 +5,7 @@ import './css/main.css';
 
 import Header from './compoents/Header';
 import AnimatedRoutes from './compoents/AnimatedRoutes';
-import { Link, useLocation } from 'react-router-dom';
+
 
 
 const App = () => {
@@ -22,6 +22,7 @@ const App = () => {
     <>
       <Header />
        {/* {path} */}
+
       <AnimatedRoutes/>
     </>
   );

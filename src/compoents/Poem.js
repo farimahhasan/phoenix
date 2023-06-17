@@ -75,13 +75,13 @@ const Poem = () => {
                                     <img src={copy} alt='copy icon' />
                                     <span className='color_dark'>رونوشت</span>
                                 </span>
-                                <span className='button-link p-2 me-2 poem-icon bg_white '
+                                {/* <span className='button-link p-2 me-2 poem-icon bg_white '
 
                                 >
 
                                     <img src={share} alt='copy icon' />
                                     <span className='color_dark'>همرسانی</span>
-                                </span>
+                                </span> */}
                             </div>
 
 
