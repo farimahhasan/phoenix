@@ -10,6 +10,7 @@ const RequireAuth = () => {
   console.log(authTokens)
   //localStorage.getItem('tokens')
   const isLoggedIn = window.localStorage.getItem('isLoggedIn')
+  const order = window.localStorage.getItem('order')
   const location = useLocation();
 
   //const from = location.state?.from?.pathname ;
@@ -17,7 +18,13 @@ const RequireAuth = () => {
     return (
       <Navigate to="/login" state={{ from: location }} replace />
     )
-  } else {
+  }
+
+  // else if(!order){
+  //   <Navigate to="/package" />
+  // }
+  
+  else {
     return <Outlet />
   }
   // authTokens

@@ -54,7 +54,7 @@ const Poets = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.75, ease: "easeOut" }}
-                        exit={{ opacity: 0 }} className='row  m-0 p-0 mb-5 container mx-auto justify-content-center' id='home-poet' >
+                        exit={{ opacity: 0 }} className='row  m-0 p-0 mb-5 container mx-auto justify-content-center' id='poet-section' >
                         <>
                             <h3 className='heading text-center mt-5'>سخنوران پر مخاطب</h3>
                             {
@@ -95,8 +95,9 @@ const Poets = () => {
                         </>
 
                         <div className='text-center'>
+                            <Link to='/package' className='text-decoration-none'>
                             <button className='button-poets button-link color_white heading mt-5 p-2 mx-auto'><img src={arrow_icon} alt="arrow icon" /> همه سخنوران </button>
-
+                            </Link>
                         </div>
 
 

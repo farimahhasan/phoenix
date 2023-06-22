@@ -1,7 +1,9 @@
 import React from 'react';
 import Details from './Details';
 import Category from './Category';
+import CategoryChild from './CategoryChild';
 import Poem from './Poem';
+import PoemChild from './PoemChild';
 import Form from './Form';
 import Home from './Home';
 import Package from './Package';
@@ -10,6 +12,7 @@ import Layout from './Layout';
 import Poets from './Poets';
 import Test from './Test';
 import Missing from './Missing';
+import Payment from './Payment';
 
 import { Route, Routes,useLocation } from 'react-router-dom';
 
@@ -28,15 +31,20 @@ const AnimatedRoutes = () => {
                     {/* <Route path="search/details/:id" element={<Details />} /> */}
                     <Route path="/" element={<Home />} />
                     <Route path="/category/:fullUrl/:fullUrl2" element={<Category />} />
+                    <Route path="/category-child/:fullUrl/:fullUrl2/:fullUrl3" element={<CategoryChild />} />
                     <Route path="/poem/:fullUrl/:fullUrl2/:fullUrl3" element={<Poem />} />
+                    <Route path="/poem-child/:fullUrl/:fullUrl2/:fullUrl3/:fullUrl4" element={<PoemChild />} />
+
                     <Route path="/login" element={<Form />} />
                     <Route path="/poets" element={<Poets />} />
                     <Route path="/poets/details/:fullUrl" element={<Details />} />
                     {/* <Route path="unauthorized" element={<Unauthorized />} /> */}
                     <Route element={<RequireAuth />}>
                         <Route path="/package" element={<Package />} />
+                        <Route path="/payment" element={<Payment />} />
                     </Route>
 
+                   
                     {/* <Route path="/search" element={<Cartsearch/>} />        */}
 
                     

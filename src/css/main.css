@@ -173,6 +173,7 @@ header nav{
     background-position: center;*/
     height: 100vh;
     overflow: hidden;
+    margin-bottom: 0;
 }
 
 
@@ -721,6 +722,7 @@ hr {
     outline: none;
     border-radius: 35px;
     transition: width 0.5s;
+    cursor: pointer;
   }
   
   .search-cat > div > input::placeholder {
@@ -834,6 +836,10 @@ hr {
 
 }
 
+
+.highlight{
+  font-size: 2em;
+}
 
 
 

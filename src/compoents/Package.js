@@ -1,23 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import axios from 'axios';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
+import arrow_icon from '../images/arrow-small-right 1.svg'
+
+
 const Package = () => {
 
     const TOKEN = localStorage.getItem('token');
-       console.log(TOKEN, 'this is token from package page')
-       const orderStroge = localStorage.getItem("order");
-       console.log(orderStroge, 'order id');
-    const orderId = localStorage.getItem("orderId");
-    console.log(orderId, 'order id')
+    console.log(TOKEN, 'this is token from package page')
+    const orderStroge = localStorage.getItem("order");
+    console.log(orderStroge, 'order ');
 
 
+    const navigate = useNavigate();
 
-const [pay,setPay]=useState()
-
-
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, [])
 
 
     const getHandler = async () => {
@@ -30,7 +27,8 @@ const [pay,setPay]=useState()
             .then(response => {
                 console.log(response.data, 'packages data ?');
                 window.localStorage.setItem("order", true);
-                window.localStorage.setItem("orderId" , `${response.data.order.id}`)
+                window.localStorage.setItem("orderId", `${response.data.order.id}`)
+                navigate('/payment')
 
             })
             .catch(error => {
@@ -39,23 +37,26 @@ const [pay,setPay]=useState()
 
     }
 
-    const payHandler=async ()=>{
-        axios.get(`http://farimahhasan.ir/api/order/${orderId}/pay`, {
-            headers: {
-                //'Content-Type': 'application/json',
-                'Authorization': `Bearer ${TOKEN}`
-            }
-        })
-            .then(response => {
-                console.log(response, 'pay data ?');
-                window.localStorage.setItem("pay", true)
-                setPay(response.data)
+    useEffect(() => {
+        orderStroge && navigate('/payment')
+    }, [])
+    // const payHandler=async ()=>{
+    //     axios.get(`http://farimahhasan.ir/api/order/${orderId}/pay`, {
+    //         headers: {
+    //             //'Content-Type': 'application/json',
+    //             'Authorization': `Bearer ${TOKEN}`
+    //         }
+    //     })
+    //         .then(response => {
+    //             console.log(response, 'pay data ?');
+    //             window.localStorage.setItem("pay", true)
+    //             setPay(response.data)
 
-            })
-            .catch(error => {
-                console.log(error)
-            })
-    }
+    //         })
+    //         .catch(error => {
+    //             console.log(error)
+    //         })
+    // }
 
 
     //axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('access_token')}`;
@@ -68,18 +69,17 @@ const [pay,setPay]=useState()
             exit={{ opacity: 0 }}
             className='h-100'
         >
-            
+
             {
-                orderStroge ?<button onClick={payHandler}> پرداخت</button>
-                :<button className='text-center' onClick={getHandler}>انتخاب این پکیج</button>
+                <div className='text-center d-flex justify-content-center align-items center'>
+                    <button className='button-poets button-link color_white heading mt-5 p-2 mx-auto w-auto' onClick={getHandler}><img src={arrow_icon} alt="arrow icon" />  دسترسی به همه سخنوران
+                    <br/>
+                     با پرداخت 20 هزار تومان </button>
+                </div>
             }
 
 
-            {
-                pay &&
 
-                <div className='color_white mt-3 w-100' dangerouslySetInnerHTML={{ __html: `${pay}` }}></div>
-            }
         </motion.section>
     );
 };

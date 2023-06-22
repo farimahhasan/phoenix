@@ -14,14 +14,14 @@ import { motion } from 'framer-motion';
 
 
 
-const Poem = () => {
+const PoemChild = () => {
     const params = useParams();
 
 
     const [poem, setPoem] = useState({})
 
     const getPoem = async () => {
-        const response = await axios.get(`https://api.ganjoor.net/api/ganjoor/poem?url=/${params.fullUrl}/${params.fullUrl2}/${params.fullUrl3}`);
+        const response = await axios.get(`https://api.ganjoor.net/api/ganjoor/poem?url=/${params.fullUrl}/${params.fullUrl2}/${params.fullUrl3}/${params.fullUrl4}`);
         return response;
     }
 
@@ -54,7 +54,7 @@ const Poem = () => {
 
                             {
                                 poem.next &&
-                                <Link key={poem.next.id} to={`/poem${poem.category.cat.fullUrl}/${poem.next.urlSlug}`} onClick={getPoem()} className="text-decoration-none ">
+                                <Link key={poem.next.id} to={`/poem-child${poem.category.cat.fullUrl}/${poem.next.urlSlug}`} onClick={getPoem()} className="text-decoration-none ">
                                     <button className=' color_white  button-link  p-2 px-3'>
 
                                         <img src={arrow_icon} alt="arrow icon" />
@@ -103,7 +103,7 @@ const Poem = () => {
                         <div className='d-flex justify-content-md-end justify-content-sm-center justify-content-center mt-5'>
                             {
                                 poem.previous &&
-                                <Link key={poem.previous.id} to={`/poem${poem.category.cat.fullUrl}/${poem.previous.urlSlug}`} onClick={getPoem()} className="text-decoration-none ">
+                                <Link key={poem.previous.id} to={`/poem-child${poem.category.cat.fullUrl}/${poem.previous.urlSlug}`} onClick={getPoem()} className="text-decoration-none ">
                                     <button className='color_white pereviouse button-link  p-2 px-3 '>
                                         {poem.previous.title} {/* : {poem.previous.excerpt} */}
                                         <img src={arrow_icon} className='previous-poem-icon' alt="arrow icon" />
@@ -177,4 +177,4 @@ btn.addEventListener('click', async () => {
     );
 };
 
-export default Poem;
+export default PoemChild;

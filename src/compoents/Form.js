@@ -28,6 +28,7 @@ const Form = () => {
 
   useEffect(() => {
     setError('');
+    window.scrollTo(0,0);
   }, [data])
 
   const changeHandler = event => {

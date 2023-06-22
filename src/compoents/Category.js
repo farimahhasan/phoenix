@@ -57,6 +57,7 @@ const Category = () => {
                           <input dir="rtl" type="text" placeholder="جستجو در عناوین" required className="color_white" value={search} onChange={searchHandeler} />
                       </div>
                   </div>
+                  
                   {cat.cat && searchCat &&
   
   
@@ -84,7 +85,7 @@ const Category = () => {
   
                           <div className='col-md-5 col-sm-12 col-12 text-center ' key={item.id}>
                               <div className=" mx-auto category-component category-content d-flex align-items-center justify-content-center">
-                                  <Link to={`/category${item.fullUrl}`} onClick={getCat()}
+                                  <Link to={`/category-child${item.fullUrl}`} onClick={getCat()}
                                       className='color_white text-decoration-none'>{item.title} {item.excerpt}</Link >
                               </div>
                           </div>
