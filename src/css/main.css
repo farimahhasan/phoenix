@@ -754,8 +754,8 @@ hr {
 
     header nav {
         bottom: 5px;
-        left: 15px;
-        right: 15px;
+        left: 10px;
+        right: 10px;
         border: 1px solid var(--dark);
         padding: 12px 0;       
     }
@@ -842,4 +842,14 @@ hr {
 }
 
 
-
+/* scroll top */
+.scroll-top{
+  right : 16px ;
+  bottom: 15px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  z-index: 999;
+  width: 34px;
+  height: 35px;
+}

@@ -5,6 +5,7 @@ import './css/main.css';
 
 import Header from './compoents/Header';
 import AnimatedRoutes from './compoents/AnimatedRoutes';
+import ScrollTop from './compoents/ScrollTop';
 
 
 
@@ -24,6 +25,7 @@ const App = () => {
        {/* {path} */}
 
       <AnimatedRoutes/>
+      <ScrollTop />
     </>
   );
 };
