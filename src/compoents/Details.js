@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 
 const Details = () => {
     const params = useParams();
+    console.log(params)
 
 
     const [poet, setPoet] = useState({})

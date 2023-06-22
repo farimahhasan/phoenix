@@ -141,13 +141,15 @@ btn.addEventListener('click', async () => {
 
                         {
                             poem.verses &&
-                            
+                             <>
+                                    <h4 className='text-center color-white mb-3'>برگردان به زبان ساده</h4>
+                                    {
                                     poem.verses.map(v => (
-                                        <div className='color_dark' key={v.id}>
+                                        <div className='color_white mt-3 text-center' key={v.id}>
                                             {v.coupletSummary}<br/>
                                         </div>
-                                    ))
-                             
+                                    ))}
+                             </>
                         }
 
 
