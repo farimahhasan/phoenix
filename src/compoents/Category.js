@@ -52,7 +52,7 @@ const Category = () => {
                   exit={{ opacity: 0 }}
                   className='container row justify-content-center mx-auto mt-5 align-items-center' id='cat-section'>
   
-                  <div class="search-cat col-12 text-center mb-5">
+                  <div className="search-cat col-12 text-center mb-5">
                       <div>
                           <input dir="rtl" type="text" placeholder="جستجو در عناوین" required className="color_white" value={search} onChange={searchHandeler} />
                       </div>

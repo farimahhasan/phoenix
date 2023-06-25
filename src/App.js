@@ -8,7 +8,6 @@ import AnimatedRoutes from './compoents/AnimatedRoutes';
 import ScrollTop from './compoents/ScrollTop';
 
 
-
 const App = () => {
   // const location=useLocation();
   // let crumblink='';
@@ -19,6 +18,11 @@ const App = () => {
   //   </Link>
   // })
   // console.log(crumblink)
+
+
+
+
+
   return (
     <>
       <Header />

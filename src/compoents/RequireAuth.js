@@ -10,7 +10,6 @@ const RequireAuth = () => {
   console.log(authTokens)
   //localStorage.getItem('tokens')
   const isLoggedIn = window.localStorage.getItem('isLoggedIn')
-  const order = window.localStorage.getItem('order')
   const location = useLocation();
 
   //const from = location.state?.from?.pathname ;

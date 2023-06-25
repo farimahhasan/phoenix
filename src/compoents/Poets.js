@@ -1,16 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 import arrow_icon from '../images/arrow-small-right 1.svg'
 
 import { motion } from 'framer-motion';
-
+import PayContext from '../context/PayProvider';
 
 const Poets = () => {
 
+    const context = useContext(PayContext)
+    console.log(pay.pay)
+
     const [poets, setPoets] = useState([]);
-    const [pay, setPay] = useState(true)
+
+    // const [pay, setPay] = useState(false)
 
     // const getPoets = async () => {
     //     const response = await axios.get(`https://api.ganjoor.net/api/ganjoor/poets`);
@@ -21,6 +25,7 @@ const Poets = () => {
         const response = await axios.get('https://api.ganjoor.net/api/ganjoor/centuries')
         return response;
     }
+
 
     useEffect(() => {
         // const fetchAPI = async () => {
@@ -38,6 +43,36 @@ const Poets = () => {
         }
         fetchAPI();
 
+        // if(TOKEN){  
+
+        // const getStatus = async () => {
+        //     axios.get('http://farimahhasan.ir/api/package/1/status', {
+        //         headers: {
+        //             //'Content-Type': 'application/json',
+        //             'Authorization': `Bearer ${TOKEN}`
+        //         }
+        //     })
+        //         .then(response => {
+        //             console.log(response.data);
+        //             if(response.data.status===true){
+        //                 setPay(true)
+        //                 window.localStorage.setItem("truePay", true)
+        //               }else{
+        //                   setPay(false)
+        //                 window.localStorage.setItem("truePay", false)
+        //               }
+        //         })
+        //         .catch(error => {
+        //             console.log(error)
+        //         })
+
+        // }
+        // getStatus()
+
+        // }
+
+
+        window.scrollTo(0, 0);
     }, [])
 
 
@@ -93,20 +128,22 @@ const Poets = () => {
                                 })
                             }
                         </>
+                        {
+                            !context.pay &&
 
-                        <div className='text-center'>
-                            <Link to='/package' className='text-decoration-none'>
-                            <button className='button-poets button-link color_white heading mt-5 p-2 mx-auto'><img src={arrow_icon} alt="arrow icon" /> همه سخنوران </button>
-                            </Link>
-                        </div>
-
+                            <div className='text-center'>
+                                <Link to='/package' className='text-decoration-none'>
+                                    <button className='button-poets button-link color_white heading mt-5 p-2 mx-auto'><img src={arrow_icon} alt="arrow icon" /> همه سخنوران </button>
+                                </Link>
+                            </div>
+                        }
 
 
                         {
-                            pay &&
+                            poets && context.pay &&
                             <>
 
-                                <div class="search-cat col-12 text-center mt-5">
+                                <div className="search-cat col-12 text-center mt-5">
                                     <div>
                                         <input dir="rtl" type="text" placeholder="جستجوی سخنور" required className="color_white" />
                                     </div>
@@ -153,7 +190,7 @@ const Poets = () => {
                                                         {c.poets.map(p => {
                                                             return (
                                                                 <div className="card-poets position-relative mt-5 col-md-2 col-sm-4 col-5 text-center" key={p.id}>
-                                                                    <Link to={`details/${p.id}`} className="text-decoration-none">
+                                                                    <Link to={`details${p.fullUrl}`} className="text-decoration-none">
 
                                                                         <div className="face face1">
                                                                             <img className='' src={`https://api.ganjoor.net${p.imageUrl}`} alt={p.name} />
