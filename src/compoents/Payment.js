@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import arrow_icon from '../images/arrow-small-right 1.svg'
+import { motion } from 'framer-motion';
+
 
 
 
@@ -34,7 +36,14 @@ function Payment() {
 
 
     return (
-        <div>
+         <motion.section
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.75, ease: "easeOut" }}
+        exit={{ opacity: 0 }}
+        className=''
+        id="payment-section"
+    >
             {
                 <div className='text-center d-flex justify-content-center align-items center'>
                     <button className='button-poets button-link color_white heading mt-5 p-2 mx-auto w-auto' onClick={payHandler}><img src={arrow_icon} alt="arrow icon" />   پرداخت  </button>
@@ -45,7 +54,7 @@ function Payment() {
 
                 <div className='color_white mt-3 w-100' dangerouslySetInnerHTML={{ __html: `${pay}` }}></div>
             }
-        </div>
+        </motion.section>
     );
 }
 

@@ -6,12 +6,13 @@ const PayContext = createContext({});
 
 export const PayProvider = ({ children }) => {
 
-    const TOKEN = window.localStorage.getItem('token');
+
     const [pay, setPay] = useState(false)
     const [logged, setLogged] = useState(false)
 
 
     useEffect(() => {
+        const TOKEN = window.localStorage.getItem('token');
         if (TOKEN) {
             setLogged(true)
             const getStatus = async () => {
@@ -45,7 +46,7 @@ export const PayProvider = ({ children }) => {
             setPay(false)
         }
 
-    }, [])
+    },)
     return (
         <PayContext.Provider value={{ pay , logged}}>
             {children}

@@ -22,7 +22,9 @@ import { AnimatePresence } from 'framer-motion';
 const AnimatedRoutes = () => {
 
     const context =useContext(PayContext)
-console.log(context)
+    console.log(context)
+
+
 
 
 
@@ -50,12 +52,12 @@ console.log(context)
 
                     {/* <Route path="unauthorized" element={<Unauthorized />} /> */}
                     <Route element={<RequireAuth />}>
-                        <Route path="/package" element={context.pay ? <Navigate to="/"/> : <Package />} />
-                        <Route path="/payment"  element={context.pay ? <Navigate to="/"/> : <Payment />} />
+                        <Route path="/package" forceRefresh={true} element={context.pay && context.logged ? <Navigate to="/"/> : <Package />} />
+                        <Route path="/payment"  element={context.pay && context.logged ? <Navigate to="/"/> : <Payment />} />
                     </Route>
 
                    
-                <Route path="/search" element={<Search/>} /> 
+                <Route path="/search" element={context.pay ? <Search/> :  <Navigate to="/"/> } /> 
 
 
 

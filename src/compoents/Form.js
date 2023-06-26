@@ -53,8 +53,14 @@ const Form = () => {
 
         // axios.defaults.headers.common['Authorization']=`Bearer ${accessToken}`
         //localStorage.setItem('token',accessToken)
-        navigate(from, { replace: true });
-        setSuccess(true)
+        const load = async ()=>{
+           window.location.reload(false);
+        }
+        load()
+        if(!(window.localStorage.getItem("truePay")===true)){
+          navigate(from, { replace: true });
+        }
+        setSuccess(true) 
       })
       .catch(error => {
         // if (error?.response) {

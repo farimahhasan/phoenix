@@ -408,7 +408,28 @@ hr {
     background: url(../images/tobiasbg.png) ;
     background-size: cover;
     transform: rotate(180deg);
-   
+}
+#package-section:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  left: 0;
+  background: url(../images/tobiasbg.png) ;
+  background-size: cover;
+  transform: rotate(180deg);
+}
+#payment-section:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  left: 0;
+  background: url(../images/tobiasbg.png) ;
+  background-size: cover;
+  transform: rotate(180deg);
 }
 .form {
     width: 300px;

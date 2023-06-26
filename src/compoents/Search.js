@@ -6,22 +6,27 @@ import { motion } from 'framer-motion';
 
 const Search = () => {
 
-    const[searchInput,setSearch]=useState("");
-    const[searchResult,setsearchResult]=useState([]) 
-  
-    const saveSearchHandeler= event=>{
+    const [searchInput, setSearch] = useState("");
+    const [searchResult, setsearchResult] = useState([])
+    const [loading , setLoading] = useState(false)
+
+    const saveSearchHandeler = event => {
         setSearch(event.target.value)
-    
+
     }
-  
-   const searchHandler=async ()=>{
-        console.log("Search: " + searchInput) 
-  
+
+    const searchHandler = async () => {
+        console.log("Search: " + searchInput)
+        setLoading(true)
         await axios.get(`https://api.ganjoor.net/api/ganjoor/poems/search?term=${searchInput}`)
-        .then (response => {
-            console.log(response.data)
-            setsearchResult(response.data)
-     })}
+            .then(response => {
+                console.log(response.data)
+                setLoading(false)
+                setsearchResult(response.data)
+            })
+            .catch(error => console.log(error))
+            console.log('hi')
+    }
 
     return (
         <motion.section
@@ -34,23 +39,37 @@ const Search = () => {
 
             <div className="search-cat col-12 text-center mb-5">
                 <div>
-                    <input dir="rtl" type="text" placeholder="بعد از نوشتن  enter را بزنید" required className="color_white" 
-                    
-                    value={searchInput} 
-                      
-                      onChange={saveSearchHandeler} 
+                    <input dir="rtl" type="text" placeholder="بعد از نوشتن  enter را بزنید" required className="color_white"
 
-                      onKeyPress={event => {
-                        if (event.key === "Enter") {
-                          searchHandler()
-                        }
-                      }}
+                        value={searchInput}
+
+                        onChange={saveSearchHandeler}
+
+                        onKeyPress={event => {
+                            if (event.key === "Enter") {
+                                searchHandler()
+                            }
+                        }}
                     />
                 </div>
             </div>
 
-            
-
+            {
+                searchResult && !loading ?
+                    searchResult.map((item) => (
+                        <div className='col-md-6 col-sm-12 col-12 text-center ' key={item.id}>
+                            <div className=" mx-auto category-component category-content d-flex align-items-center justify-content-center">
+                                <Link to={item.fullUrl.split("/").length===4 ? `/poem${item.fullUrl}` : `/poem-child${item.fullUrl}`}
+                                    className='color_white text-decoration-none'>{item.fullTitle}</Link >
+                            </div>
+                        </div>
+                    )) :
+                    <div className='container-spinner d-flex align-items-center mt-5 w-100 justify-content-center bg_dark'>
+                        <div className="spinner-grow color_white  " role="status">
+                            <span className="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+            }
 
         </motion.section>
     );

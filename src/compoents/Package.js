@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect , useState } from 'react';
 import axios from 'axios';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
@@ -37,9 +37,11 @@ const Package = () => {
 
     }
 
+
+
     useEffect(() => {
         orderStroge && navigate('/payment')
-    }, [])
+    },[])
     // const payHandler=async ()=>{
     //     axios.get(`http://farimahhasan.ir/api/order/${orderId}/pay`, {
     //         headers: {
@@ -67,7 +69,8 @@ const Package = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.75, ease: "easeOut" }}
             exit={{ opacity: 0 }}
-            className='h-100'
+            className=''
+            id="package-section"
         >
 
             {
