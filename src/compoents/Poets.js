@@ -10,9 +10,10 @@ import PayContext from '../context/PayProvider';
 const Poets = () => {
 
     const context = useContext(PayContext)
-    console.log(pay.pay)
+
 
     const [poets, setPoets] = useState([]);
+    const [search, setSearch] = useState("");
 
     // const [pay, setPay] = useState(false)
 
@@ -75,6 +76,15 @@ const Poets = () => {
         window.scrollTo(0, 0);
     }, [])
 
+
+    // const searchHandeler = event => {
+    //     setSearch(event.target.value)
+    // }
+
+
+    // const searchPoets = poets ? poets.map(p => (p.poets.filter(c => (c.nickname.includes(search.trim()))))) : ""
+    // console.log(searchPoets)
+    // console.log(search)
 
     return (
         <>
@@ -143,11 +153,12 @@ const Poets = () => {
                             poets && context.pay &&
                             <>
 
-                                <div className="search-cat col-12 text-center mt-5">
+                                {/* <div className="search-cat col-12 text-center mt-5">
                                     <div>
-                                        <input dir="rtl" type="text" placeholder="جستجوی سخنور" required className="color_white" />
+                                        <input dir="rtl" type="text" placeholder="جستجوی سخنور" required className="color_white" value={search} onChange={searchHandeler} />
                                     </div>
-                                </div>
+                                </div> */}
+
 
                                 <h3 className='heading text-center mt-5'>دسته‌بندی بر اساس قرن</h3>
                                 <div className='row align-items-center justfiy-content-center flex-wrap mt-4 mx-auto'>

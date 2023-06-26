@@ -14,7 +14,7 @@ const Form = () => {
   const { setAuthTokens } = useAuth()
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.from?.pathname || "/";
+  const from = location.state?.from?.pathname || "/package";
 
 
   const [data, setData] = useState({
@@ -57,13 +57,14 @@ const Form = () => {
         setSuccess(true)
       })
       .catch(error => {
-        if (error?.response) {
-          setError('بدون پاسخ سرور')
-        } else if (error?.response?.status === 400) {
+        // if (error?.response) {
+        //   setError('بدون پاسخ سرور')
+        // } else
+         if (error?.response?.status === 400) {
           setError('پست الکترونیکی یا گذرواژه از دست رفته')
 
         } else if (error?.response?.status === 401) {
-          setError('شما قبلا ثبت نام کردی ')
+          setError(' گذرواژه اشتباه است  ')
           
         } else {
           setError('نام نویسی ناموفق بود')
@@ -115,9 +116,8 @@ const Form = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.75, ease: "easeOut" }}
               exit={{ opacity: 0 }}
-              className='container vh-100 d-flex align-items-center ' id="login-section">
-              <p>{error}</p>
-
+              className='container d-flex align-items-center flex-column' id="login-section">
+              <p className='text-danger mt-3'>{error}</p>
 
               <form method='post' onSubmit={postHandler} autoComplete='off' className='form'>
 

@@ -11,6 +11,7 @@ import RequireAuth from './RequireAuth';
 import Layout from './Layout';
 import Poets from './Poets';
 import Test from './Test';
+import Search from './Search';
 import Missing from './Missing';
 import Payment from './Payment';
 import { Route, Routes,useLocation,Navigate } from 'react-router-dom';
@@ -54,7 +55,7 @@ console.log(context)
                     </Route>
 
                    
-                    {/* <Route path="/search" element={<Cartsearch/>} />        */}
+                <Route path="/search" element={<Search/>} /> 
 
 
 

@@ -1,20 +1,20 @@
-import React from 'react';
-import { NavLink  } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { NavLink } from 'react-router-dom';
 
 import home from '../images/home 1.svg'
 import person_icon from '../images/user 1.svg'
 import bag_icon from '../images/shopping-bag (1) 1.svg'
 import search from '../images/search 1.svg'
-
+import PayContext from '../context/PayProvider';
 
 const Header = () => {
-
-//   const goToTop = () => {
-//    window.scrollTo({
-//        top: 0,
-//        behavior: 'smooth',
-//    });
-// };
+   const context = useContext(PayContext)
+   //   const goToTop = () => {
+   //    window.scrollTo({
+   //        top: 0,
+   //        behavior: 'smooth',
+   //    });
+   // };
 
 
    return (
@@ -74,12 +74,22 @@ const Header = () => {
                      <span className='position-absolute'>سبد خرید</span>
                   </NavLink>
                </li>
+               {
+                  context.pay &&
+                  <li>
+                     <NavLink to={'/search'} className={(navData) => navData.isActive ? "active-link text-decoration-none header-link position-relative" : " text-decoration-none header-link position-relative"}>
+                        <img src={search} alt="search icon" />
+                        <span className='position-absolute'>جستجوی شعر</span>
+                     </NavLink>
+                  </li>
+               }
+
                {/* <li>
                    <Link to={'/search'} className='text-decoration-none'>
                    <img src={search} alt="search icon" />
                     </Link>  
                    </li> */}
-                {/* <li   onClick={goToTop}>
+               {/* <li   onClick={goToTop}>
                   بالا
                    </li>  */}
             </ul>

@@ -140,7 +140,7 @@ btn.addEventListener('click', async () => {
         <a href = "https://telegram.me/share/url?url=<URL>&text=<TEXT>">Telegram</a> */}
 
                         {
-                            poem.verses &&
+                            poem.verses[0].coupletSummary &&
                              <>
                                     <h4 className='text-center color-white mb-3'>برگردان به زبان ساده</h4>
                                     {
