@@ -4,6 +4,8 @@ import axios from 'axios';
 import { Link, useNavigate, useLocation, Navigate } from 'react-router-dom';
 import Package from './Package';
 import { motion } from 'framer-motion';
+import { validate } from './validate';
+
 
 //import email_icon from '../images/email_icon.svg'
 //import lock_icon from '../images/lock_icon.svg'
@@ -24,7 +26,17 @@ const Form = () => {
   })
   const [error, setError] = useState('')
   const [success, setSuccess] = useState(false)
+  const [errorValidation,setErrorValidation]=useState({});
 
+  const [blur,setBlur]=useState({})
+    const blurHandler=event=>{
+       setBlur({...blur,[event.target.name]:true})
+    }
+
+
+   useEffect(()=>{
+      setErrorValidation(validate(data));
+  }, [data,blur])
 
   useEffect(() => {
     setError('');
@@ -38,45 +50,54 @@ const Form = () => {
   const postHandler = async (e) => {
     e.preventDefault();
     console.log(data)
-    await axios.post('http://farimahhasan.ir/api/login', data, {
-      config: { withCredentials: true }
-    })
-      .then(response => {
-        console.log(response, response?.headers, response?.status);
-        const accessToken = response?.data?.token;
-        console.log(accessToken)
-        window.localStorage.setItem("isLoggedIn", true)
-
-        //axios.defaults.headers.common["Authorization"] = "Bearer " + accessToken
-        setAuth({ data })
-        setAuthTokens(accessToken)
-
-        // axios.defaults.headers.common['Authorization']=`Bearer ${accessToken}`
-        //localStorage.setItem('token',accessToken)
-        // const load = async ()=>{
-        //    window.location.reload(false);
-        // }
-        // load()
-        // if(!(window.localStorage.getItem("truePay")===true)){
-        //   navigate(from, { replace: true });
-        // }
-        setSuccess(true) 
-        navigate(from, { replace: true });
+    if(Object.keys(errorValidation).length){
+      setBlur({
+        email:true,
+        password:true,
+    })  
+    }
+    else{
+      await axios.post('http://farimahhasan.ir/api/login', data, {
+        config: { withCredentials: true }
       })
-      .catch(error => {
-        // if (error?.response) {
-        //   setError('بدون پاسخ سرور')
-        // } else
-         if (error?.response?.status === 400) {
-          setError('پست الکترونیکی یا گذرواژه از دست رفته')
-
-        } else if (error?.response?.status === 401) {
-          setError(' گذرواژه اشتباه است  ')
-          
-        } else {
-          setError('نام نویسی ناموفق بود')
-        }
-      })
+        .then(response => {
+          console.log(response, response?.headers, response?.status);
+          const accessToken = response?.data?.token;
+          console.log(accessToken)
+          window.localStorage.setItem("isLoggedIn", true)
+  
+          //axios.defaults.headers.common["Authorization"] = "Bearer " + accessToken
+          setAuth({ data })
+          setAuthTokens(accessToken)
+  
+          // axios.defaults.headers.common['Authorization']=`Bearer ${accessToken}`
+          //localStorage.setItem('token',accessToken)
+          // const load = async ()=>{
+          //    window.location.reload(false);
+          // }
+          // load()
+          // if(!(window.localStorage.getItem("truePay")===true)){
+          //   navigate(from, { replace: true });
+          // }
+          setSuccess(true) 
+          navigate(from, { replace: true });
+        })
+        .catch(error => {
+          // if (error?.response) {
+          //   setError('بدون پاسخ سرور')
+          // } else
+           if (error?.response?.status === 400) {
+            setError('پست الکترونیکی یا گذرواژه از دست رفته')
+  
+          } else if (error?.response?.status === 401) {
+            setError(' گذرواژه اشتباه است  ')
+            
+          } else {
+            setError('نام نویسی ناموفق بود')
+          }
+        })
+  
+    }
 
 
     /*         try {
@@ -126,10 +147,10 @@ const Form = () => {
               className='container d-flex align-items-center flex-column justify-content-center vh-100' id="login-section">
               <p className='text-danger mt-3'>{error}</p>
 
-              <form method='post' onSubmit={postHandler} autoComplete='off' className='form'>
+              <form method='post' noValidate onSubmit={postHandler} autoComplete='off' className='form'>
 
                 <div className='control block-cube block-input'>
-                  <input type="text" placeholder="نام شما" className='color_white' name="name" value={data.name} onChange={changeHandler} />
+                  <input type="text" placeholder="نام شما" className='color_white' name="name" value={data.name} onChange={changeHandler}  />
                   <div className='bg-top'>
                     <div className='bg-inner'></div>
                   </div>
@@ -141,7 +162,9 @@ const Form = () => {
                   </div>
                 </div>
                 <div className='control block-cube block-input'>
-                  <input type="email" placeholder=" پست الکترونیکی شما" className='color_white' required name="email" value={data.email} onChange={changeHandler} />
+                  <input type="email" placeholder=" پست الکترونیکی شما"  name="email" value={data.email} onChange={changeHandler} onBlur={blurHandler} 
+                  className='color_white'
+                  />
                   <div className='bg-top'>
                     <div className='bg-inner'></div>
                   </div>
@@ -152,8 +175,9 @@ const Form = () => {
                     <div className='bg-inner'></div>
                   </div>
                 </div>
-                <div className='control block-cube block-input'>
-                  <input type="password" className='color_white' placeholder="گذرواژه شما" required name="password" value={data.password} onChange={changeHandler} minLength={8} />
+                {errorValidation.email && blur.email && <span className='text-danger'>{errorValidation.email}</span>}
+                <div className='control block-cube block-input mt-4'>
+                  <input type="password" className='color_white' placeholder="گذرواژه شما"  name="password" value={data.password} onChange={changeHandler} onBlur={blurHandler}  />
                   <div className='bg-top'>
                     <div className='bg-inner'></div>
                   </div>
@@ -164,7 +188,8 @@ const Form = () => {
                     <div className='bg-inner'></div>
                   </div>
                 </div>
-                <button className='btn block-cube block-cube-hover' type='submit'>
+                {errorValidation.password && blur.password && <span className='text-danger'>{errorValidation.password}</span>}
+                <button className='btn block-cube block-cube-hover mt-4' type='submit' >
                   <div className='bg-top'>
                     <div className='bg-inner'></div>
                   </div>

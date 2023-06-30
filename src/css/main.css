@@ -175,6 +175,11 @@ header nav{
 .modal{
   padding: 0 17px !important;
 }
+@media (min-width:576px){
+ .modal{
+  --bs-modal-margin:0;
+ }
+}
 .modal-content{
   background-color: var(--dark);
 }
