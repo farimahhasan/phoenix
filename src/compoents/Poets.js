@@ -7,6 +7,8 @@ import arrow_icon from '../images/arrow-small-right 1.svg'
 import { motion } from 'framer-motion';
 import PayContext from '../context/PayProvider';
 
+import { Modal, Button } from 'react-bootstrap';
+
 const Poets = () => {
 
     const context = useContext(PayContext)
@@ -86,6 +88,10 @@ const Poets = () => {
     // console.log(searchPoets)
     // console.log(search)
 
+    const [isShow, invokeModal] = useState(false)
+    const initModal = () => {
+        return invokeModal(!isShow)
+    }
     return (
         <>
             {
@@ -99,7 +105,7 @@ const Poets = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.75, ease: "easeOut" }}
-                        exit={{ opacity: 0 }} className='row  m-0 p-0 mb-5 container mx-auto justify-content-center' id='poet-section' >
+                        exit={{ opacity: 0 }} className='row  m-0 p-0 mb-100 container mx-auto justify-content-center' id='poet-section' >
                         <>
                             <h3 className='heading text-center mt-5'>سخنوران پر مخاطب</h3>
                             {
@@ -140,12 +146,29 @@ const Poets = () => {
                         </>
                         {
                             !context.pay &&
+                            <>
+                                <div className='text-center mb-5'>
+                                    <button onClick={initModal} className='button-poets button-link color_white heading mt-5 p-2 mx-auto'><img src={arrow_icon} alt="arrow icon" /> همه سخنوران </button>
+                                </div>
+                                <Modal show={isShow} >
+                                    <Modal.Header closeButton className='btn-close-white' onClick={initModal}>
 
-                            <div className='text-center mb-5'>
-                                <Link to='/package' className='text-decoration-none'>
-                                    <button className='button-poets button-link color_white heading mt-5 p-2 mx-auto'><img src={arrow_icon} alt="arrow icon" /> همه سخنوران </button>
-                                </Link>
-                            </div>
+                                    </Modal.Header>
+                                    <Modal.Body>
+                                        برای دسترسی به همه سخنوران و قابلیت جستجوی شعر باید اشتراک تهیه کنید .
+                                        برای تهیه اشتراک  ابتدا نام نویسی کنید .
+                                        اگر اشتراک دارید کافی است وارد شوید.
+                                    </Modal.Body>
+                                    <Modal.Footer className='justify-content-center'>
+                                        <Link to='/package' className='text-decoration-none'>
+                                            <button onClick={initModal} className='button-poets button-link color_white heading p-2' >
+                                                <img src={arrow_icon} alt="arrow icon" />
+                                                ورود کاربر / نام نویسی
+                                            </button>
+                                        </Link>
+                                    </Modal.Footer>
+                                </Modal>
+                            </>
                         }
 
 

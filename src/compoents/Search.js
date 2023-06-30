@@ -34,12 +34,11 @@ const Search = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.75, ease: "easeOut" }}
             exit={{ opacity: 0 }}
-            className='container row justify-content-center mx-auto mt-5 align-items-center' id='cat-section'>
-
+            className='container row justify-content-center mx-auto mt-5 align-items-center mb-100' id='cat-section'>
 
             <div className="search-cat col-12 text-center mb-5">
                 <div>
-                    <input dir="rtl" type="text" placeholder="بعد از نوشتن  enter را بزنید" required className="color_white"
+                    <input dir="rtl" type="text" placeholder="ّ، بعد از نوشتن  enter را بزنید" required className="color_white"
 
                         value={searchInput}
 

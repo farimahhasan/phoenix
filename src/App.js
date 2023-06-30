@@ -1,11 +1,13 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+//import 'bootstrap/dist/css/bootstrap.min.css';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import '../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js';
 import './css/main.css';
 
 import Header from './compoents/Header';
 import AnimatedRoutes from './compoents/AnimatedRoutes';
 import ScrollTop from './compoents/ScrollTop';
+import Back from './compoents/Back';
 
 
 const App = () => {
@@ -30,6 +32,7 @@ const App = () => {
 
       <AnimatedRoutes/>
       <ScrollTop />
+      <Back />
     </>
   );
 };

@@ -29,7 +29,7 @@ const Form = () => {
   useEffect(() => {
     setError('');
     window.scrollTo(0,0);
-  }, [data])
+  }, [])
 
   const changeHandler = event => {
     setData({ ...data, [event.target.name]: event.target.value })
@@ -53,14 +53,15 @@ const Form = () => {
 
         // axios.defaults.headers.common['Authorization']=`Bearer ${accessToken}`
         //localStorage.setItem('token',accessToken)
-        const load = async ()=>{
-           window.location.reload(false);
-        }
-        load()
-        if(!(window.localStorage.getItem("truePay")===true)){
-          navigate(from, { replace: true });
-        }
+        // const load = async ()=>{
+        //    window.location.reload(false);
+        // }
+        // load()
+        // if(!(window.localStorage.getItem("truePay")===true)){
+        //   navigate(from, { replace: true });
+        // }
         setSuccess(true) 
+        navigate(from, { replace: true });
       })
       .catch(error => {
         // if (error?.response) {
@@ -113,7 +114,7 @@ const Form = () => {
     <>
       {
         success ?
-          <p>موفق</p>
+          <p className='text-center'>موفق</p>
           :
 
           <>
@@ -122,7 +123,7 @@ const Form = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.75, ease: "easeOut" }}
               exit={{ opacity: 0 }}
-              className='container d-flex align-items-center flex-column' id="login-section">
+              className='container d-flex align-items-center flex-column justify-content-center vh-100' id="login-section">
               <p className='text-danger mt-3'>{error}</p>
 
               <form method='post' onSubmit={postHandler} autoComplete='off' className='form'>
@@ -174,7 +175,7 @@ const Form = () => {
                     <div className='bg-inner'></div>
                   </div>
                   <div className='text'>
-                    نام نویسی
+                 ورود کاربر / نام نویسی
                   </div>
                 </button>
 

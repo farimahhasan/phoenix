@@ -53,7 +53,7 @@ const Header = () => {
 
       // </header>
       <header className='position-relative'>
-         <nav className='d-flex align-items-center position-fixed justify-content-center'>
+         <nav className='d-flex position-fixed justify-content-center'>
             <ul className='m-0 p-0 d-flex flex-md-column flex-sm-row flex-row list-unstyled'>
                <li>
                   <NavLink to={'/'}
@@ -68,12 +68,12 @@ const Header = () => {
                      <span className='position-absolute'>نام نویسی</span>
                   </NavLink>
                </li>
-               <li>
+               {/* <li>
                   <NavLink to={'/package'} className={(navData) => navData.isActive ? "active-link text-decoration-none header-link position-relative" : " text-decoration-none header-link position-relative"}>
                      <img src={bag_icon} alt="bag icon" />
                      <span className='position-absolute'>سبد خرید</span>
                   </NavLink>
-               </li>
+               </li> */}
                {
                   context.pay &&
                   <li>

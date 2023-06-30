@@ -49,7 +49,7 @@ const PoemChild = () => {
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.75, ease: "easeOut" }}
                         exit={{ opacity: 0 }}
-                        className='mt-5 container row mx-auto justify-content-center position-relative' id="poem-section">
+                        className='mt-5 container row mx-auto justify-content-center position-relative mb-100' id="poem-section">
                         <div className='d-flex flex-md-row flex-sm-column flex-column text-center justify-content-md-between justify-content-sm-center justify-content-center'>
 
                             {
