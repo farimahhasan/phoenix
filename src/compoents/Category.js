@@ -3,16 +3,11 @@ import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { motion } from 'framer-motion';
 
-
-
 const Category = () => {
+    
     const params = useParams();
-    console.log(params.fullUrl)
-
     const [cat, setCat] = useState({})
     const [search, setSearch] = useState("");
-
-
 
     const getCat = async () => {
         const response = await axios.get(`https://api.ganjoor.net/api/ganjoor/cat?url=/${params.fullUrl}/${params.fullUrl2}`);
@@ -23,7 +18,6 @@ const Category = () => {
         window.scrollTo(0, 0);
         const fetchAPI = async () => {
             const response = await getCat();
-            console.log(response.data)
             setCat(response.data)
         }
         fetchAPI();
@@ -34,9 +28,9 @@ const Category = () => {
         setSearch(event.target.value)
     }
 
-
     const searchCat = cat.cat ? cat.cat.poems.filter(c => c.excerpt.includes(search.trim())) : "";
-    const searchChild = cat.cat ? cat.cat.children.filter(c => c.title.includes(search.trim())) : ""
+    const searchChild = cat.cat ? cat.cat.children.filter(c => c.title.includes(search.trim())) : "";
+
     return (
         <>
             {
@@ -59,8 +53,6 @@ const Category = () => {
                         </div>
 
                         {cat.cat && searchCat &&
-
-
                             searchCat.map(item =>
                                 <div className='col-md-5 col-sm-12 col-12 text-center ' key={item.id}>
                                     <Link to={`/poem${cat.cat.fullUrl}/${item.urlSlug}`} className='color_white text-decoration-none'>
@@ -70,14 +62,6 @@ const Category = () => {
                                     </Link >
                                 </div>
                             )
-
-                            // cat.cat.poems.map(item => (
-                            //     <div className='col-md-5 col-sm-12 col-12 text-center' key={item.id}>
-                            //         <div className=" mx-auto category-component category-content">
-                            //             <Link to={`/poem/${item.id}`} className='color_white text-decoration-none'>{item.title} : {item.excerpt}</Link >
-                            //         </div>
-                            //     </div>
-                            // ))
                         }
 
                         {
@@ -91,15 +75,9 @@ const Category = () => {
                                     </Link >
                                 </div>
                             ))
-
                         }
-
                     </motion.section>
-
             }
-
-
-
         </>
     );
 };

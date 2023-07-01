@@ -1,15 +1,16 @@
-import React, { useState, useEffect , useContext} from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import arrow_icon from '../images/arrow-small-right 1.svg'
 import axios from 'axios';
 import { motion } from 'framer-motion';
 import PayContext from '../context/PayProvider';
+
 const Details = () => {
+
     const params = useParams();
     console.log(params)
 
-    const context=useContext(PayContext)
-
+    const context = useContext(PayContext)
 
     const [poet, setPoet] = useState({})
 
@@ -21,18 +22,14 @@ const Details = () => {
     useEffect(() => {
         const fetchAPI = async () => {
             const response = await getPoet();
-            console.log(response.data)
             setPoet(response.data)
         }
         fetchAPI();
-            
         window.scrollTo(0, 0);
     }, [])
 
-
     return (
         <>
-
             {
                 !poet.cat ? <div className='container-spinner position-absolute d-flex align-items-center vh-100 w-100 justify-content-center bg_dark'>
                     <div className="spinner-grow color_white  " role="status">
@@ -44,7 +41,6 @@ const Details = () => {
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.75, ease: "easeOut" }}
                         exit={{ opacity: 0 }} className=' d-flex align-items-center justify-content-center position-relative' id="details-section">
-
                         <div className="main">
                             {poet.poet && poet.poet.id <= 6 &&
                                 <>
@@ -79,10 +75,8 @@ const Details = () => {
 
                                                                     </button>
                                                                 </Link>
-
                                                             )
                                                             )}
-
                                                         </p>
                                                     </div>
                                                 </div>
@@ -139,11 +133,8 @@ const Details = () => {
                             }
 
                         </div>
-
-
                     </motion.section >
             }
-
         </>
     );
 };

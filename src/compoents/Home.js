@@ -5,9 +5,8 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import PayContext from '../context/PayProvider';
 
-
-
 const Home = () => {
+
     const context = useContext(PayContext)
 
     return (
@@ -29,7 +28,7 @@ const Home = () => {
                     }
                 </Link>
                 {
-                   context.logged===true && context.pay === false &&
+                    context.logged === true && context.pay === false &&
                     <Link to={'/package'} className='button-link text-decoration-none mt-2 d-flex align-items-center p-2 mx-auto'>
                         <img src={arrow_icon} alt='arrow icon' />
 

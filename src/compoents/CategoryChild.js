@@ -4,12 +4,11 @@ import axios from 'axios';
 import { motion } from 'framer-motion';
 
 const CategoryChild = () => {
+
     const params = useParams();
-    console.log(params.fullUrl)
 
     const [child, setChild] = useState({})
     const [search, setSearch] = useState("");
-
 
     const getCat = async () => {
         const response = await axios.get(`https://api.ganjoor.net/api/ganjoor/cat?url=/${params.fullUrl}/${params.fullUrl2}/${params.fullUrl3}`);
@@ -20,19 +19,17 @@ const CategoryChild = () => {
         window.scrollTo(0, 0);
         const fetchAPI = async () => {
             const response = await getCat();
-            console.log(response.data)
             setChild(response.data)
         }
         fetchAPI();
     }, [])
 
-
     const searchHandeler = event => {
         setSearch(event.target.value)
     }
 
+    const searchChild = child.cat ? child.cat.poems.filter(c => c.title.includes(search.trim())) : "";
 
-    const searchChild = child.cat ? child.cat.poems.filter(c => c.title.includes(search.trim())) : ""
     return (
         <>
             {
@@ -55,8 +52,6 @@ const CategoryChild = () => {
                         </div>
 
                         {child.cat && searchChild &&
-
-
                             searchChild.map(item =>
                                 <div className='col-md-5 col-sm-12 col-12 text-center ' key={item.id}>
                                     <Link to={`/poem-child${child.cat.fullUrl}/${item.urlSlug}`} className='color_white text-decoration-none'>
@@ -65,24 +60,11 @@ const CategoryChild = () => {
                                         </div>
                                     </Link >
                                 </div>
-
                             )
-
-                            // cat.cat.poems.map(item => (
-                            //     <div className='col-md-5 col-sm-12 col-12 text-center' key={item.id}>
-                            //         <div className=" mx-auto category-component category-content">
-                            //             <Link to={`/poem/${item.id}`} className='color_white text-decoration-none'>{item.title} : {item.excerpt}</Link >
-                            //         </div>
-                            //     </div>
-                            // ))
                         }
 
                     </motion.section>
-
             }
-
-
-
         </>
     );
 };

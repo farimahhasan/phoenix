@@ -24,21 +24,11 @@ const ScrollTop = () => {
             {showTopBtn &&
 
                 <div className="scroll-top position-fixed button-link bg-white" onClick={goToTop}>
-                    <img src={arrowUp} />
+                    <img src={arrowUp} alt="arrow icon" />
                 </div>
 
             }
         </>
-
-
-
-        // {showTopBtn && (
-        //     <FaAngleUp
-        //         className="icon-position icon-style"
-        //         onClick={goToTop}
-        //     />
-        // )}
-
     );
 }
 

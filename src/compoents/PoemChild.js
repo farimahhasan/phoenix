@@ -1,23 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
-
 import arrow_icon from '../images/arrow-small-right 1.svg'
 import copy from '../images/copy-alt.svg'
-import share from '../images/share.svg'
-
 import { motion } from 'framer-motion';
 
-
-
-
-
-
-
 const PoemChild = () => {
+
     const params = useParams();
-
-
     const [poem, setPoem] = useState({})
 
     const getPoem = async () => {
@@ -25,12 +15,9 @@ const PoemChild = () => {
         return response;
     }
 
-
-
     useEffect(() => {
         const fetchAPI = async () => {
             const response = await getPoem();
-            console.log(response.data)
             setPoem(response.data)
         }
         fetchAPI();
@@ -54,14 +41,10 @@ const PoemChild = () => {
 
                             {
                                 poem.next &&
-                                <Link key={poem.next.id} to={`/poem-child${poem.category.cat.fullUrl}/${poem.next.urlSlug}`} onClick={getPoem()} className="text-decoration-none ">
+                                <Link key={poem.next.id} to={`/poem-child${poem.category.cat.fullUrl}/${poem.next.urlSlug}`} onClick={getPoem()} className="text-decoration-none mx-md-0 mx-sm-auto mx-auto ">
                                     <button className=' color_white  button-link  p-2 px-3'>
-
                                         <img src={arrow_icon} alt="arrow icon" />
-
-
-                                        {poem.next.title} {/* : {poem.previous.excerpt}
- */}
+                                        {poem.next.title}
                                     </button>
                                 </Link>
 
@@ -75,16 +58,7 @@ const PoemChild = () => {
                                     <img src={copy} alt='copy icon' />
                                     <span className='color_dark'>رونوشت</span>
                                 </span>
-                                {/* <span className='button-link p-2 me-2 poem-icon bg_white '
-
-                                >
-
-                                    <img src={share} alt='copy icon' />
-                                    <span className='color_dark'>همرسانی</span>
-                                </span> */}
                             </div>
-
-
                         </div>
 
 
@@ -97,15 +71,12 @@ const PoemChild = () => {
                             </div>
                         </div>
 
-
-
-
                         <div className='d-flex justify-content-md-end justify-content-sm-center justify-content-center mt-5'>
                             {
                                 poem.previous &&
                                 <Link key={poem.previous.id} to={`/poem-child${poem.category.cat.fullUrl}/${poem.previous.urlSlug}`} onClick={getPoem()} className="text-decoration-none ">
                                     <button className='color_white pereviouse button-link  p-2 px-3 '>
-                                        {poem.previous.title} {/* : {poem.previous.excerpt} */}
+                                        {poem.previous.title}
                                         <img src={arrow_icon} className='previous-poem-icon' alt="arrow icon" />
                                     </button>
                                 </Link>
@@ -113,67 +84,32 @@ const PoemChild = () => {
                             }
                         </div>
 
-
-                        {/*                         const shareData = {
-  title: 'MDN',
-  text: 'Learn web development on MDN!',
-  url: 'https://developer.mozilla.org',
-}
-
-const btn = document.querySelector('button');
-const resultPara = document.querySelector('.result');
-
-// Must be triggered some kind of "user activation"
-btn.addEventListener('click', async () => {
-  try {
-    await navigator.share(shareData)
-    resultPara.textContent = 'MDN shared successfully'
-  } catch(err) {
-    resultPara.textContent = 'Error: ' + err
-  }
-}); */}
-
-                        {/* <h3 style="color:brown"> WhatsApp sharing Link </h3> 
-    <!-- create a link using anchor tab -->
-    <a href="whatsapp://send?text=This is WhatsApp sharing example using link" 		data-action="share/whatsapp/share"
-		target="_blank"> Share to WhatsApp </a> 
-        <a href = "https://telegram.me/share/url?url=<URL>&text=<TEXT>">Telegram</a> */}
-
                         {
-                             poem.verses[0].coupletSummary !== null &&
-                            
-                                    poem.verses.map(v => (
-                                        <div className='color_dark' key={v.id}>
-                                            {v.coupletSummary}<br/>
-                                        </div>
-                                    ))
-                             
+                            poem.verses[0].coupletSummary !== null &&
+
+                            poem.verses.map(v => (
+                                <div className='color_dark' key={v.id}>
+                                    {v.coupletSummary}<br />
+                                </div>
+                            ))
                         }
-
-
                         {
                             poem.recitations && poem.recitations.map((item, i) => (
                                 <div key={item.id} className="mt-5 text-center">
-                                    <audio controls  id={`audio-${i + 1}"`}>
-                                        <source src={item.mp3Url}/>
+                                    <audio controls id={`audio-${i + 1}"`}>
+                                        <source src={item.mp3Url} />
                                     </audio>
                                     <p className='color_white '>{item.audioArtist}</p>
                                 </div>
                             ))
                         }
-{/* 
+                        {/* 
                      <Link to={'/test'} className='text-decoration-none color_white'>
                         <h2 className='text-center'> تست خوانش</h2>
                      </Link> */}
-                     
-
-
                     </motion.section>
             }
-
-
         </>
-
     );
 };
 

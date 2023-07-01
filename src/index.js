@@ -3,20 +3,16 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from "react-router-dom";
-
-import { AuthProvider } from './context/AuthProvider';
 import { PayProvider } from './context/PayProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
    <BrowserRouter>
-      <AuthProvider>
          <PayProvider>
             <React.StrictMode>
                <App />
             </React.StrictMode>
          </PayProvider>
-      </AuthProvider>
    </BrowserRouter>
 );
 

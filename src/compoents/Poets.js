@@ -1,28 +1,15 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-
 import arrow_icon from '../images/arrow-small-right 1.svg'
-
 import { motion } from 'framer-motion';
 import PayContext from '../context/PayProvider';
-
 import { Modal } from 'react-bootstrap';
 
 const Poets = () => {
 
     const context = useContext(PayContext)
-
-
     const [poets, setPoets] = useState([]);
-    const [search, setSearch] = useState("");
-
-    // const [pay, setPay] = useState(false)
-
-    // const getPoets = async () => {
-    //     const response = await axios.get(`https://api.ganjoor.net/api/ganjoor/poets`);
-    //     return response;
-    // }
 
     const getPoets = async () => {
         const response = await axios.get('https://api.ganjoor.net/api/ganjoor/centuries')
@@ -31,62 +18,14 @@ const Poets = () => {
 
 
     useEffect(() => {
-        // const fetchAPI = async () => {
-        //     const response = await getPoets();
-        //     console.log(response.data)
-        //     setPoets(response.data)
-        // }
-        // fetchAPI();
-
         const fetchAPI = async () => {
             const response = await getPoets();
-            console.log(response.data)
             setPoets(response.data)
 
         }
         fetchAPI();
-
-        // if(TOKEN){  
-
-        // const getStatus = async () => {
-        //     axios.get('http://farimahhasan.ir/api/package/1/status', {
-        //         headers: {
-        //             //'Content-Type': 'application/json',
-        //             'Authorization': `Bearer ${TOKEN}`
-        //         }
-        //     })
-        //         .then(response => {
-        //             console.log(response.data);
-        //             if(response.data.status===true){
-        //                 setPay(true)
-        //                 window.localStorage.setItem("truePay", true)
-        //               }else{
-        //                   setPay(false)
-        //                 window.localStorage.setItem("truePay", false)
-        //               }
-        //         })
-        //         .catch(error => {
-        //             console.log(error)
-        //         })
-
-        // }
-        // getStatus()
-
-        // }
-
-
         window.scrollTo(0, 0);
     }, [])
-
-
-    // const searchHandeler = event => {
-    //     setSearch(event.target.value)
-    // }
-
-
-    // const searchPoets = poets ? poets.map(p => (p.poets.filter(c => (c.nickname.includes(search.trim()))))) : ""
-    // console.log(searchPoets)
-    // console.log(search)
 
     const [isShow, invokeModal] = useState(false)
     const initModal = () => {
@@ -115,13 +54,6 @@ const Poets = () => {
                                         return (
                                             c.poets.map(p => {
                                                 return (
-                                                    //  <div className='mt-5 col-md col-sm-4 col-4 text-center card-poets' >
-                                                    //      <Link to={`details/${p.id}`} className="text-decoration-none">
-                                                    //          <img className='' src={`https://api.ganjoor.net${p.imageUrl}`} alt={p.name} />
-                                                    //          <h6 className='heading color_white  mt-2'>{p.nickname}</h6>
-                                                    //      </Link>
-                                                    //  </div>
-
                                                     <div className="card-poets position-relative mt-4 col-md col-sm-4 col-5 text-center" key={p.id}>
                                                         <Link to={`details${p.fullUrl}`} className="text-decoration-none">
 
@@ -135,8 +67,6 @@ const Poets = () => {
                                                             </div>
                                                         </Link>
                                                     </div>
-
-
                                                 );
                                             })
                                         )
@@ -159,7 +89,7 @@ const Poets = () => {
                                         اگر اشتراک دارید کافی است وارد شوید.
                                     </Modal.Body>
                                     <Modal.Footer className='justify-content-center'>
-                                        <Link to='/package' className='text-decoration-none'>
+                                        <Link to='/login' className='text-decoration-none'>
                                             <button onClick={initModal} className='button-poets button-link color_white heading p-2' >
                                                 <img src={arrow_icon} alt="arrow icon" />
                                                 ورود کاربر / نام نویسی
@@ -172,9 +102,11 @@ const Poets = () => {
                         {
                             !context.pay && context.logged &&
                             <>
-                                <div className='text-center mb-5'>
-                                    <button className='button-poets button-link color_white heading mt-5 p-2 mx-auto'><img src={arrow_icon} alt="arrow icon" /> همه سخنوران </button>
-                                </div>
+                                <Link to='/package' className='text-decoration-none'>
+                                    <div className='text-center mb-5'>
+                                        <button className='button-poets button-link color_white heading mt-5 p-2 mx-auto'><img src={arrow_icon} alt="arrow icon" /> همه سخنوران </button>
+                                    </div>
+                                </Link>
                             </>
                         }
 
@@ -182,13 +114,6 @@ const Poets = () => {
                         {
                             poets && context.pay &&
                             <>
-
-                                {/* <div className="search-cat col-12 text-center mt-5">
-                                    <div>
-                                        <input dir="rtl" type="text" placeholder="جستجوی سخنور" required className="color_white" value={search} onChange={searchHandeler} />
-                                    </div>
-                                </div> */}
-
 
                                 <h3 className='heading text-center mt-5'>دسته‌بندی بر اساس قرن</h3>
                                 <div className='row align-items-center justfiy-content-center flex-wrap mt-4 mx-auto'>
@@ -216,11 +141,7 @@ const Poets = () => {
                                     </div>
                                     <div className='col-md-2 col-sm-3 col-3 p-2'><a href='#c12' className='button-link text-decoration-none color_white p-2 heading'> چهاردهم</a>
                                     </div>
-
-
                                 </div>
-
-
                                 <div className='col-12 mt-4' id='centuries'>
                                     {
                                         poets && poets.map((c) => {
@@ -257,9 +178,6 @@ const Poets = () => {
 
                             </>
                         }
-
-
-
 
                     </motion.section>
             }

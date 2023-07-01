@@ -1,23 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import useAuth from '../hooks/useAuth';
 import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
-import Package from './Package';
 import { motion } from 'framer-motion';
 import { validate } from './validate';
 
-
-//import email_icon from '../images/email_icon.svg'
-//import lock_icon from '../images/lock_icon.svg'
-
 const Form = () => {
-
-  const { setAuth } = useAuth();
-  const { setAuthTokens } = useAuth()
-  const navigate = useNavigate();
-
-
-
 
   const [data, setData] = useState({
     name: "",
@@ -32,7 +18,6 @@ const Form = () => {
   const blurHandler = event => {
     setBlur({ ...blur, [event.target.name]: true })
   }
-
 
   useEffect(() => {
     setErrorValidation(validate(data));
@@ -50,7 +35,6 @@ const Form = () => {
 
   const postHandler = async (e) => {
     e.preventDefault();
-    console.log(data)
     if (Object.keys(errorValidation).length) {
       setBlur({
         email: true,
@@ -62,67 +46,23 @@ const Form = () => {
         config: { withCredentials: true }
       })
         .then(response => {
-          console.log(response, response?.headers, response?.status);
           const accessToken = response?.data?.token;
-          console.log(accessToken)
+          localStorage.setItem("token", accessToken);
           window.localStorage.setItem("isLoggedIn", true)
-
-          //axios.defaults.headers.common["Authorization"] = "Bearer " + accessToken
-          setAuth({ data })
-          setAuthTokens(accessToken)
           window.location.reload()
-          // axios.defaults.headers.common['Authorization']=`Bearer ${accessToken}`
-          //localStorage.setItem('token',accessToken)
           setSuccess(true)
         })
         .catch(error => {
-          // if (error?.response) {
-          //   setError('بدون پاسخ سرور')
-          // } else
           if (error?.response?.status === 400) {
             setError('پست الکترونیکی یا گذرواژه از دست رفته')
-
           } else if (error?.response?.status === 401) {
             setError(' گذرواژه اشتباه است  ')
-
           } else {
             setError('نام نویسی ناموفق بود')
           }
         })
-
     }
-
-
-    /*         try {
-                
-    
-                const response=await axios.post('http://farimahhasan.ir/api/login',
-                  JSON.stringify({data}),
-                   {
-                    withCredentials:true
-                   }
-                );
-                console.log(JSON.stringify(response?.data))
-                const accessToken=response?.data?.remember_token;
-                   setAuth({data, accessToken})
-              
-                setSuccess(true)
-            }
-            catch (err) {
-             if(!err?.response){
-                setError('بدون پاسخ سرور')
-             }else if(err.response?.status === 400){
-                setError('پست الکترونیکی یا گذرواژه از دست رفته')
-    
-             }else if(err.response?.status === 401){
-                setError('غیرمجاز')
-             }else{
-                setError('نام نویسی ناموفق بود')
-             }
-            }
-     */
   }
-
 
   return (
     <>
@@ -199,10 +139,7 @@ const Form = () => {
 
               </form>
             </motion.section>
-
-
           </>
-
       }</>
   );
 };

@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { motion } from 'framer-motion';
-
 
 const Search = () => {
 
@@ -16,11 +15,9 @@ const Search = () => {
     }
 
     const searchHandler = async () => {
-        console.log("Search: " + searchInput)
         setLoading(true)
         await axios.get(`https://api.ganjoor.net/api/ganjoor/poems/search?term=${searchInput}`)
             .then(response => {
-                console.log(response.data)
                 setLoading(false)
                 setsearchResult(response.data)
             })
