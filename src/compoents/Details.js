@@ -8,7 +8,6 @@ import PayContext from '../context/PayProvider';
 const Details = () => {
 
     const params = useParams();
-    console.log(params)
 
     const context = useContext(PayContext)
 

@@ -68,7 +68,9 @@ const Form = () => {
     <>
       {
         success ?
-          <p className='text-center'>موفق</p>
+        <div className='d-flex justify-content-center align-items-center vh-100'>
+          <h3 className='text-center'>عملیات با موفقیت انجام شد</h3>
+        </div>
           :
 
           <>

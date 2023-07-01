@@ -12,6 +12,7 @@ import Test from './Test';
 import Search from './Search';
 import Missing from './Missing';
 import Payment from './Payment';
+import ErrorPay from './ErrorPay';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import PayContext from '../context/PayProvider';
@@ -36,6 +37,7 @@ const AnimatedRoutes = () => {
                 <Route path="/package" element={(context.logged) && (context.logged && !context.pay) ? <Package /> : <Navigate to="/" />} />
                 <Route path="/payment" element={(context.logged) && (context.logged && !context.pay) ? <Payment /> : <Navigate to="/" />} />
                 <Route path="/search" element={context.pay ? <Search /> : <Navigate to="/" />} />
+                <Route path="/error" element={<ErrorPay />} />
                 <Route path="*" element={<Missing />} />
             </Routes>
         </AnimatePresence>
