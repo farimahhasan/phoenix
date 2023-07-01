@@ -140,7 +140,7 @@ btn.addEventListener('click', async () => {
         <a href = "https://telegram.me/share/url?url=<URL>&text=<TEXT>">Telegram</a> */}
 
                         {
-                            poem.verses &&
+                             poem.verses[0].coupletSummary !== null &&
                             
                                     poem.verses.map(v => (
                                         <div className='color_dark' key={v.id}>
@@ -161,10 +161,10 @@ btn.addEventListener('click', async () => {
                                 </div>
                             ))
                         }
-
+{/* 
                      <Link to={'/test'} className='text-decoration-none color_white'>
                         <h2 className='text-center'> تست خوانش</h2>
-                     </Link>
+                     </Link> */}
                      
 
 

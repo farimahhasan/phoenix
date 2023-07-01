@@ -46,7 +46,7 @@ export const PayProvider = ({ children }) => {
             setPay(false)
         }
 
-    },)
+    })
     return (
         <PayContext.Provider value={{ pay , logged}}>
             {children}

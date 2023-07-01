@@ -8,7 +8,7 @@ const Search = () => {
 
     const [searchInput, setSearch] = useState("");
     const [searchResult, setsearchResult] = useState([])
-    const [loading , setLoading] = useState(false)
+    const [loading, setLoading] = useState(false)
 
     const saveSearchHandeler = event => {
         setSearch(event.target.value)
@@ -25,7 +25,7 @@ const Search = () => {
                 setsearchResult(response.data)
             })
             .catch(error => console.log(error))
-            console.log('hi')
+        console.log('hi')
     }
 
     return (
@@ -38,7 +38,7 @@ const Search = () => {
 
             <div className="search-cat col-12 text-center mb-5">
                 <div>
-                    <input dir="rtl" type="text" placeholder="ّ، بعد از نوشتن  enter را بزنید" required className="color_white"
+                    <input dir="rtl" type="text" placeholder="ّبعد از نوشتن ، دکمه enter را بزنید" required className="color_white"
 
                         value={searchInput}
 
@@ -57,10 +57,12 @@ const Search = () => {
                 searchResult && !loading ?
                     searchResult.map((item) => (
                         <div className='col-md-6 col-sm-12 col-12 text-center ' key={item.id}>
-                            <div className=" mx-auto category-component category-content d-flex align-items-center justify-content-center">
-                                <Link to={item.fullUrl.split("/").length===4 ? `/poem${item.fullUrl}` : `/poem-child${item.fullUrl}`}
-                                    className='color_white text-decoration-none'>{item.fullTitle}</Link >
-                            </div>
+                            <Link to={item.fullUrl.split("/").length === 4 ? `/poem${item.fullUrl}` : `/poem-child${item.fullUrl}`}
+                                className='color_white text-decoration-none'>
+                                <div className=" mx-auto category-content d-flex align-items-center justify-content-center">
+                                    {item.fullTitle}
+                                </div>
+                            </Link>
                         </div>
                     )) :
                     <div className='container-spinner d-flex align-items-center mt-5 w-100 justify-content-center bg_dark'>

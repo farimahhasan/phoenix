@@ -155,7 +155,7 @@ btn.addEventListener('click', async () => {
 
                         {
                             poem.recitations && poem.recitations.map((item, i) => (
-                                <div key={item.id} className="mt-5 text-center">
+                                <div key={item.id} className="mt-5 text-center col-md-6 col-sm-12 col-12">
                                     <audio controls  id={`audio-${i + 1}"`}>
                                         <source src={item.mp3Url}/>
                                     </audio>
@@ -164,9 +164,9 @@ btn.addEventListener('click', async () => {
                             ))
                         }
 
-                     <Link to={'/test'} className='text-decoration-none color_white'>
+                     {/* <Link to={'/test'} className='text-decoration-none color_white'>
                         <h2 className='text-center'> تست خوانش</h2>
-                     </Link>
+                     </Link> */}
                      
 
 

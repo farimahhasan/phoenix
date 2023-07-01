@@ -7,7 +7,7 @@ import arrow_icon from '../images/arrow-small-right 1.svg'
 import { motion } from 'framer-motion';
 import PayContext from '../context/PayProvider';
 
-import { Modal, Button } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 
 const Poets = () => {
 
@@ -145,14 +145,13 @@ const Poets = () => {
                             }
                         </>
                         {
-                            !context.pay &&
+                            !context.pay && !context.logged &&
                             <>
                                 <div className='text-center mb-5'>
                                     <button onClick={initModal} className='button-poets button-link color_white heading mt-5 p-2 mx-auto'><img src={arrow_icon} alt="arrow icon" /> همه سخنوران </button>
                                 </div>
                                 <Modal show={isShow} >
                                     <Modal.Header closeButton className='btn-close-white' onClick={initModal}>
-
                                     </Modal.Header>
                                     <Modal.Body>
                                         برای دسترسی به همه سخنوران و قابلیت جستجوی شعر باید اشتراک تهیه کنید .
@@ -168,6 +167,14 @@ const Poets = () => {
                                         </Link>
                                     </Modal.Footer>
                                 </Modal>
+                            </>
+                        }
+                        {
+                            !context.pay && context.logged &&
+                            <>
+                                <div className='text-center mb-5'>
+                                    <button className='button-poets button-link color_white heading mt-5 p-2 mx-auto'><img src={arrow_icon} alt="arrow icon" /> همه سخنوران </button>
+                                </div>
                             </>
                         }
 

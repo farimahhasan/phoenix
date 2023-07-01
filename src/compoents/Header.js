@@ -62,12 +62,16 @@ const Header = () => {
                      <span className='position-absolute'>صفحه اصلی</span>
                   </NavLink>
                </li>
-               <li>
-                  <NavLink to={'/login'} className={(navData) => navData.isActive ? "active-link text-decoration-none header-link position-relative" : " text-decoration-none header-link position-relative"}>
-                     <img src={person_icon} alt="user icon" />
-                     <span className='position-absolute'>نام نویسی</span>
-                  </NavLink>
-               </li>
+               {
+                  !context.logged &&
+                  <li>
+                     <NavLink to={'/login'} className={(navData) => navData.isActive ? "active-link text-decoration-none header-link position-relative" : " text-decoration-none header-link position-relative"}>
+                        <img src={person_icon} alt="user icon" />
+                        <span className='position-absolute'>نام نویسی</span>
+                     </NavLink>
+                  </li>
+               }
+
                {/* <li>
                   <NavLink to={'/package'} className={(navData) => navData.isActive ? "active-link text-decoration-none header-link position-relative" : " text-decoration-none header-link position-relative"}>
                      <img src={bag_icon} alt="bag icon" />

@@ -597,20 +597,21 @@ hr {
             box-shadow: 5px 5px 10px #1a1a1a, -5px -5px 10px #242424;
     border-radius: 5px;
     color: white;
-    padding: 1.75rem;
+    padding:0 1.75rem;
     transition: 0.4s ease;
     overflow-wrap: break-word !important;
     margin: 1rem;
     margin-bottom: 20px;
     border-radius: 6px;
-    min-height: 100px;
+    height: 115px;
     width: 100%;
+    overflow: hidden;
   }
   
-  .category-component {
+  /* .category-component {
     margin: 0px 20px 20px 20px;
   }
-  
+   */
 
 
   /*poem*/
@@ -656,7 +657,7 @@ hr {
     box-shadow: 1px 1px 2px  #1a1a1a;;
     margin: auto;
     margin-top: 50px;
-    padding: 15px;
+    padding: 20px;
   
   }
   

@@ -1,4 +1,4 @@
-import React, { useEffect, useState ,useContext }  from 'react';
+import React, { useContext }  from 'react';
 import Details from './Details';
 import Category from './Category';
 import CategoryChild from './CategoryChild';
@@ -52,7 +52,7 @@ const AnimatedRoutes = () => {
 
                     {/* <Route path="unauthorized" element={<Unauthorized />} /> */}
                     <Route element={<RequireAuth />}>
-                        <Route path="/package" forceRefresh={true} element={context.pay && context.logged ? <Navigate to="/"/> : <Package />} />
+                        <Route path="/package"  element={context.pay && context.logged ? <Navigate to="/"/> : <Package />} />
                         <Route path="/payment"  element={context.pay && context.logged ? <Navigate to="/"/> : <Payment />} />
                     </Route>
 

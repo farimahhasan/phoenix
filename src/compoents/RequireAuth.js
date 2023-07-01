@@ -13,19 +13,16 @@ const RequireAuth = () => {
   const location = useLocation();
 
   //const from = location.state?.from?.pathname ;
-  if (!(isLoggedIn)) {
+  if (!(isLoggedIn===true)) {
     return (
-      <Navigate to="/login" state={{ from: location }} replace />
+      <Navigate to="/login" replace />
     )
   }
-
   // else if(!order){
   //   <Navigate to="/package" />
   // }
   
-  else {
-    return <Outlet />
-  }
+
   // authTokens
   // ? <Outlet />
   // : <Navigate to="/login" state={{ from: location }} replace />

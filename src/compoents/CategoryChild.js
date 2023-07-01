@@ -60,8 +60,8 @@ const CategoryChild = () => {
                             searchChild.map(item =>
                                 <div className='col-md-5 col-sm-12 col-12 text-center ' key={item.id}>
                                     <Link to={`/poem-child${child.cat.fullUrl}/${item.urlSlug}`} className='color_white text-decoration-none'>
-                                        <div className=" mx-auto category-component category-content d-flex justify-content-center align-items-center">
-                                            {item.title} : {item.excerpt}
+                                        <div className=" mx-auto category-content d-flex justify-content-center align-items-center">
+                                            {item.title}
                                         </div>
                                     </Link >
                                 </div>
