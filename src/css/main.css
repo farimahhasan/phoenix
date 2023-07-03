@@ -882,6 +882,16 @@ hr {
   font-size: 2em;
 }
 
+[action*=zarinpal] button{
+  border: 1px solid #ffff;
+  border-radius: 20px 20px 0 0;
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  margin: 0 auto;
+}
 
 /* scroll top */
 .scroll-top{

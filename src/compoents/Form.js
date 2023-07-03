@@ -82,7 +82,7 @@ const Form = () => {
               className='container d-flex align-items-center flex-column justify-content-center vh-100' id="login-section">
               <p className='text-danger mt-3'>{error}</p>
 
-              <form method='post' noValidate onSubmit={postHandler} autoComplete='off' className='form'>
+              <form method='post' noValidate onSubmit={postHandler} autoComplete='off' className='form mt-3'>
 
                 <div className='control block-cube block-input'>
                   <input type="text" placeholder="نام شما" className='color_white' name="name" value={data.name} onChange={changeHandler} />

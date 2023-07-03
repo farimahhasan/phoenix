@@ -29,7 +29,7 @@ const Home = () => {
                 </Link>
                 {
                     context.logged === true && context.pay === false &&
-                    <Link to={'/package'} className='button-link text-decoration-none mt-2 d-flex align-items-center p-2 mx-auto'>
+                    <Link to={'/package'} className='button-link text-decoration-none mt-3 d-flex align-items-center p-2 mx-auto'>
                         <img src={arrow_icon} alt='arrow icon' />
 
                         <span className='color_white heading'>تهیه اشتراک</span>

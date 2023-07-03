@@ -20,12 +20,12 @@ const Payment = () => {
                 console.log(response, 'pay data ?');
                 window.localStorage.setItem("pay", true)
                 setPay(response.data)
-
             })
             .catch(error => {
                 console.log(error)
             })
     }
+
 
 
     return (
@@ -43,7 +43,6 @@ const Payment = () => {
 
                     {
                         pay &&
-
                         <div className='color_white mt-3 w-100' dangerouslySetInnerHTML={{ __html: `${pay}` }}></div>
                     }
                 </>

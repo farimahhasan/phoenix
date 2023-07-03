@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import arrow_icon from '../images/arrow-small-right 1.svg'
-import copy from '../images/copy-alt.svg'
+// import copy from '../images/copy-alt.svg'
 import { motion } from 'framer-motion';
 
 const PoemChild = () => {
@@ -49,16 +49,16 @@ const PoemChild = () => {
                                 </Link>
 
                             }
-
+                            {/* 
                             <div className='d-flex justify-content-center mt-md-0 mt-sm-4 mt-4'>
                                 <span className='button-link p-2 ms-2 poem-icon bg_white '
-                                    onClick={() => navigator.clipboard.writeText(`${poem.plainText}`)}
+                                    onClick={() => window.navigator.clipboard.writeText(`${poem.plainText}`)}
                                 >
 
                                     <img src={copy} alt='copy icon' />
                                     <span className='color_dark'>رونوشت</span>
                                 </span>
-                            </div>
+                            </div> */}
                         </div>
 
 
