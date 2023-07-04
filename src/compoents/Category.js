@@ -28,7 +28,7 @@ const Category = () => {
         setSearch(event.target.value)
     }
 
-    const searchCat = cat.cat ? cat.cat.poems.filter(c => c.excerpt.includes(search.trim())) : "";
+    const searchCat = cat.cat ? cat.cat.poems.filter(c => c.title.includes(search.trim())) : "";
     const searchChild = cat.cat ? cat.cat.children.filter(c => c.title.includes(search.trim())) : "";
 
     return (

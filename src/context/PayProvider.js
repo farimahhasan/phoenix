@@ -14,7 +14,7 @@ export const PayProvider = ({ children }) => {
         if (TOKEN) {
             setLogged(true)
             const getStatus = async () => {
-                axios.get('http://farimahhasan.ir/api/package/1/status', {
+                axios.get('https://farimahhasan.ir/api/package/1/status', {
                     headers: {
                         'Authorization': `Bearer ${TOKEN}`
                     }

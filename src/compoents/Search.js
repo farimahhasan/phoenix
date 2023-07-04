@@ -22,7 +22,6 @@ const Search = () => {
                 setsearchResult(response.data)
             })
             .catch(error => console.log(error))
-        console.log('hi')
     }
 
     return (

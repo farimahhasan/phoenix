@@ -12,7 +12,7 @@ const Package = () => {
     const navigate = useNavigate();
 
     const getHandler = async () => {
-        axios.get('http://farimahhasan.ir/api/package/1/order', {
+        axios.get('https://farimahhasan.ir/api/package/1/order', {
             headers: {
                 'Authorization': `Bearer ${TOKEN}`
             }

@@ -95,7 +95,7 @@ const PoemChild = () => {
                         }
                         {
                             poem.recitations && poem.recitations.map((item, i) => (
-                                <div key={item.id} className="mt-5 text-center">
+                                <div key={item.id} className="mt-5 text-center col-md-6 col-sm-12 col-12">
                                     <audio controls id={`audio-${i + 1}"`}>
                                         <source src={item.mp3Url} />
                                     </audio>

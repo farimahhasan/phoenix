@@ -42,7 +42,7 @@ const Form = () => {
       })
     }
     else {
-      await axios.post('http://farimahhasan.ir/api/login', data, {
+      await axios.post('https://farimahhasan.ir/api/login', data, {
         config: { withCredentials: true }
       })
         .then(response => {
@@ -58,7 +58,7 @@ const Form = () => {
           } else if (error?.response?.status === 401) {
             setError(' گذرواژه اشتباه است  ')
           } else {
-            setError('نام نویسی ناموفق بود')
+            setError('ورود کاربر / نام نویسی ناموفق بود')
           }
         })
     }

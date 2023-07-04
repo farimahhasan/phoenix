@@ -11,13 +11,12 @@ const Payment = () => {
     const [pay, setPay] = useState()
 
     const payHandler = async () => {
-        axios.get(`http://farimahhasan.ir/api/order/${orderId}/pay`, {
+        axios.get(`https://farimahhasan.ir/api/order/${orderId}/pay`, {
             headers: {
                 'Authorization': `Bearer ${TOKEN}`
             }
         })
             .then(response => {
-                console.log(response, 'pay data ?');
                 window.localStorage.setItem("pay", true)
                 setPay(response.data)
             })
