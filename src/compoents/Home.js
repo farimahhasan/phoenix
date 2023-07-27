@@ -6,9 +6,7 @@ import { motion } from 'framer-motion';
 import PayContext from '../context/PayProvider';
 
 const Home = () => {
-
     const context = useContext(PayContext)
-
     return (
         <>
             <motion.section
